@@ -26,7 +26,7 @@ class Leapfrog:
         The interaction from which to calculate the acceleration in terms of the
         position. Must have an `acceleration(pos, *argv)` member function.
 
-        `*argvs`
+        `*argv`
         Any additional arguments of `interaction.acceleration`.
 
         Returns
