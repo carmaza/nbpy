@@ -21,21 +21,22 @@ class TestRandomDistribution(unittest.TestCase):
     def test(self):
 
         seed = np.random.randint(0, 1e6)
-        np.random.seed(seed)
 
         N = np.random.randint(2, 10)
-        positions, velocities = RandomDistribution(seed).variables(N)
+        positions = np.zeros((N, 3))
+        velocities = np.zeros((N, 3))
+        RandomDistribution(seed).set_variables(positions, velocities)
 
-        # Reset rng to same seed in order to obtain same random arrays.
-        np.random.seed(seed)
+        # Reset RNG to previous seed in order to obtain same random arrays.
+        rng = np.random.default_rng(seed)
 
         self.assertTrue(
-            np.allclose(positions, np.random.randn(N, 3)),
+            np.allclose(positions, rng.standard_normal((N, 3))),
             msg="In {name}: positions differs from expected value. "
             "RNG seed: {seed}.".format(name=self.name(), seed=seed))
 
         self.assertTrue(
-            np.allclose(velocities, np.random.randn(N, 3)),
+            np.allclose(velocities, rng.standard_normal((N, 3))),
             msg="In {name}: gravitational energy differs from expected value. "
             "RNG seed: {seed}.".format(name=self.name(), seed=seed))
 

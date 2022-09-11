@@ -11,15 +11,15 @@ class RandomDistribution:
 
     """
 
-    def __init__(self, seed=np.random.randint(1, 1e6)):
+    def __init__(self, seed=25092020):
         self._seed = seed
 
     @property
     def seed(self):
         return self._seed
 
-    def variables(self, N):
-        np.random.seed(self._seed)
-        pos = np.random.randn(N, 3)
-        vel = np.random.randn(N, 3)
-        return pos, vel
+    def set_variables(self, positions, velocities):
+        N = positions.shape[0]
+        rng = np.random.default_rng(self._seed)
+        positions[:] = rng.standard_normal((N, 3))
+        velocities[:] = rng.standard_normal((N, 3))
