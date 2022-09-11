@@ -14,25 +14,21 @@ class InverseSquareLaw:
         self._constant = constant
         self._softening = softening
 
-    def acceleration(self, positions, masses):
+    def exert(self, accelerations, masses, positions):
         """
-        Get acceleration from positions and masses of all interacting particles.
+        Compute accelerations of all interacting particles.
 
         Parameters
         ---------
 
-        `positions` : ndarray
-        N x 3 array containing the position of all N particles.
+        `accelerations` : ndarray [mutates]
+        N x 3 array to store the accelerations of all N particles.
 
         `masses` : ndarray
         N x 1 array containing the masses of all N particles.
-        
 
-        Returns
-        -------
-
-        out : ndarray
-        N x 3 array containing the acceleration of all the particles.
+        `positions` : ndarray
+        N x 3 array containing the positions of all N particles.
 
         """
         # `x` stores x coordinates of all particles, and similarly for y and z.
@@ -48,9 +44,6 @@ class InverseSquareLaw:
         inv_d_cube = (d_x**2. + d_y**2. + d_z**2. +
                       self._softening**2.)**(-1.5)
 
-        result = np.empty_like(positions)
-        result[:, 0] = np.matmul(d_x * inv_d_cube, masses)
-        result[:, 1] = np.matmul(d_y * inv_d_cube, masses)
-        result[:, 2] = np.matmul(d_z * inv_d_cube, masses)
-
-        return result
+        accelerations[:, 0] = np.matmul(d_x * inv_d_cube, masses)
+        accelerations[:, 1] = np.matmul(d_y * inv_d_cube, masses)
+        accelerations[:, 2] = np.matmul(d_z * inv_d_cube, masses)

@@ -8,36 +8,33 @@ class Leapfrog:
     """
 
     @staticmethod
-    def evolve(dt, pos, vel, acc, interaction, *argv):
+    def evolve(pos, vel, acc, dt, masses, interaction, *argv):
         """
         The algorithm to update the evolved variables.
 
         Parameters
         ----------
 
-        `dt` : float
-        The (fixed) time step. Must be lower than twice the oscillation period.
-
         `pos, vel, acc` : ndarray, ndarray, ndarray
         The positions, velocities, and accelerations of the system. They must
-        have the same array shape.
+        have the same array shape among each other.
+
+        `dt` : float
+        The (fixed) time step. Must be lower than twice the characteristic
+        oscillation period.
+
+        `masses` : ndarray
+        The masses of the particles.
 
         `interaction` : obj
         The interaction from which to calculate the acceleration in terms of the
         position. Must have an `acceleration(pos, *argv)` member function.
 
         `*argv`
-        Any additional arguments of `interaction.acceleration`.
-
-        Returns
-        -------
-
-        out : ndarray, ndarray, ndarray
-        The updated positions, velocities and accelerations.
+        Any additional arguments of `interaction.exert`.
 
         """
-        new_vel = vel + 0.5 * dt * acc
-        new_pos = pos + dt * new_vel
-        new_acc = interaction.acceleration(new_pos, *argv)
-        new_vel += 0.5 * dt * new_acc
-        return new_pos, new_vel, new_acc
+        vel += 0.5 * dt * acc
+        pos += dt * vel
+        interaction.exert(acc, masses, pos)
+        vel += 0.5 * dt * acc

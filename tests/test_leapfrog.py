@@ -30,23 +30,28 @@ class TestLeapfrog(unittest.TestCase):
 
         # The specific law we use is unimportant.
         law = InverseSquareLaw(np.random.rand(), np.random.rand())
+
         pos = np.random.randn(N, dim)
         vel = np.random.randn(N, dim)
-        acc = law.acceleration(pos, masses)
+        acc = np.empty_like(pos)
+        law.exert(acc, masses, pos)
 
         # Copies to compare with later.
-        pos_ini = pos
-        vel_ini = vel
-        acc_ini = acc
+        pos_ini = pos.copy()
+        vel_ini = vel.copy()
+        acc_ini = acc.copy()
 
+        # Update evolved variables.
         dt = np.random.randn()
         stepper = Leapfrog()
-        pos, vel, acc = stepper.evolve(dt, pos, vel, acc, law, masses)
+        stepper.evolve(pos, vel, acc, dt, masses, law)
 
+        # Construct expected evolved variables.
         v_halfstep = vel_ini + 0.5 * dt * acc_ini
         pos_expected = pos_ini + dt * v_halfstep
 
-        acc_fin = law.acceleration(pos_expected, masses)
+        acc_fin = np.empty_like(pos_expected)
+        law.exert(acc_fin, masses, pos_expected)
         vel_expected = v_halfstep + 0.5 * dt * acc_fin
 
         self.assertTrue(
