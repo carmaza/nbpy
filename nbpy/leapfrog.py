@@ -15,7 +15,7 @@ class Leapfrog:
         Parameters
         ----------
 
-        `pos, vel, acc` : ndarray, ndarray, ndarray
+        `pos, vel, acc` : ndarray, ndarray, ndarray [mutate]
         The positions, velocities, and accelerations of the system. They must
         have the same array shape among each other.
 
