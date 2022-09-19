@@ -20,5 +20,5 @@ setup(
     ],
     keywords='astrophysics galactic n-body newton gravity',
     packages=find_packages(),
-    install_requires=['matplotlib>=3.5.1', 'numpy>=1.22.0', 'scipy>=1.8.0'],
+    install_requires=['matplotlib>=3.5.3', 'numpy>=1.23.0'],
     python_requires='>=3.8')
