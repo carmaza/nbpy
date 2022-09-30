@@ -14,10 +14,6 @@ class TestInverseSquareLaw(unittest.TestCase):
     Test functions in `InverseSquareLaw` class.
     """
 
-    @staticmethod
-    def name():
-        return "TestInverseSquareLaw"
-
     def test(self):
         seed = np.random.randint(0, 1e6)
         np.random.seed(seed)
@@ -46,12 +42,9 @@ class TestInverseSquareLaw(unittest.TestCase):
                 accelerations_expected[j, 1] += mass * d_y / d_cube
                 accelerations_expected[j, 2] += mass * d_z / d_cube
 
-        self.assertTrue(
-            np.allclose(accelerations, accelerations_expected),
-            msg="In {name}: acceleration differs from expected value. "
-            "RNG seed: {seed}.".format(name=self.name(), seed=seed))
-
-        print("\nAll tests in {s} passed.".format(s=self.name()))
+        self.assertTrue(np.allclose(accelerations, accelerations_expected),
+                        msg="acceleration differs from expected value. "
+                        "RNG seed: {seed}.".format(seed=seed))
 
 
 if __name__ == "__main__":

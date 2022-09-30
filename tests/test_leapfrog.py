@@ -15,10 +15,6 @@ class TestLeapfrog(unittest.TestCase):
     Test functions in `Leapfrog` class.
     """
 
-    @staticmethod
-    def name():
-        return "TestLeapfrog"
-
     def test(self):
 
         seed = np.random.randint(0, 1e6)
@@ -54,22 +50,17 @@ class TestLeapfrog(unittest.TestCase):
         law.exert(acc_fin, masses, pos_expected)
         vel_expected = v_halfstep + 0.5 * dt * acc_fin
 
-        self.assertTrue(
-            np.allclose(pos, pos_expected),
-            msg="In {name}: new position differs from expected value. "
-            "RNG seed: {seed}.".format(name=self.name(), seed=seed))
+        self.assertTrue(np.allclose(pos, pos_expected),
+                        msg="new position differs from expected value. "
+                        "RNG seed: {seed}.".format(seed=seed))
 
-        self.assertTrue(
-            np.allclose(vel, vel_expected),
-            msg="In {name}: new velocity differs from expected value. "
-            "RNG seed: {seed}.".format(name=self.name(), seed=seed))
+        self.assertTrue(np.allclose(vel, vel_expected),
+                        msg="new velocity differs from expected value. "
+                        "RNG seed: {seed}.".format(seed=seed))
 
-        self.assertTrue(
-            np.allclose(acc, acc_fin),
-            msg="In {name}: new acceleration differs from expected value. "
-            "RNG seed: {seed}.".format(name=self.name(), seed=seed))
-
-        print("\nAll tests in {s} passed.".format(s=self.name()))
+        self.assertTrue(np.allclose(acc, acc_fin),
+                        msg="new acceleration differs from expected value. "
+                        "RNG seed: {seed}.".format(seed=seed))
 
 
 if __name__ == "__main__":

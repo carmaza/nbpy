@@ -14,10 +14,6 @@ class TestRandomDistribution(unittest.TestCase):
     Test functions in `RandomDistribution` class.
     """
 
-    @staticmethod
-    def name():
-        return "TestRandomDistribution"
-
     def test(self):
 
         seed = np.random.randint(0, 1e6)
@@ -30,17 +26,14 @@ class TestRandomDistribution(unittest.TestCase):
         # Reset RNG to previous seed in order to obtain same random arrays.
         rng = np.random.default_rng(seed)
 
-        self.assertTrue(
-            np.allclose(positions, rng.standard_normal((N, 3))),
-            msg="In {name}: positions differs from expected value. "
-            "RNG seed: {seed}.".format(name=self.name(), seed=seed))
+        self.assertTrue(np.allclose(positions, rng.standard_normal((N, 3))),
+                        msg="positions differs from expected value. "
+                        "RNG seed: {seed}.".format(seed=seed))
 
         self.assertTrue(
             np.allclose(velocities, rng.standard_normal((N, 3))),
-            msg="In {name}: gravitational energy differs from expected value. "
-            "RNG seed: {seed}.".format(name=self.name(), seed=seed))
-
-        print("\nAll tests in {s} passed.".format(s=self.name()))
+            msg="gravitational energy differs from expected value. "
+            "RNG seed: {seed}.".format(seed=seed))
 
 
 if __name__ == "__main__":
