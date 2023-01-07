@@ -14,7 +14,7 @@ def run(N):
     initial_state = RandomDistribution()
 
     # Interaction's properties.
-    constant = 1.
+    constant = 4. * np.pi**2.
     softening = 1.e-4
     interaction = InverseSquareLaw(constant, softening)
 
@@ -23,15 +23,16 @@ def run(N):
     velocities = np.empty((N, 3))
     accelerations = np.empty((N, 3))
 
+    # Evolution parameters.
+    dt = 1.e-3
+    Nt = 10
+    integrator = Leapfrog()
+    observe = True
+
     print("Loading initial data...")
     initial_state.set_variables(positions, velocities)
     interaction.exert(accelerations, masses, positions)
     print("Initial data loaded.")
-
-    # Evolution parameters.
-    dt = 1.e-4
-    Nt = 600000
-    integrator = Leapfrog()
 
     print("Running evolution...")
     for i in range(1, Nt):
