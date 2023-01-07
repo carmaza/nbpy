@@ -25,7 +25,7 @@ def run(N):
 
     # Evolution parameters.
     dt = 1.e-3
-    Nt = 10
+    number_of_timesteps = 10
     integrator = Leapfrog()
     observe = True
 
@@ -35,7 +35,7 @@ def run(N):
     print("Initial data loaded.")
 
     print("Running evolution...")
-    for i in range(1, Nt):
+    for i in range(1, number_of_timesteps):
         integrator.evolve(positions, velocities, accelerations, dt, masses,
                           interaction)
 
