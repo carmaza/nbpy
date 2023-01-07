@@ -8,9 +8,8 @@ from leapfrog import Leapfrog
 from random_distribution import RandomDistribution
 
 
-def run():
+def run(N):
     # Particles' properties.
-    N = 2
     masses = np.ones(N)
     initial_state = RandomDistribution()
 
