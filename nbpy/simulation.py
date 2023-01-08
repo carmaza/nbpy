@@ -20,7 +20,7 @@ def run(N, figure_folder="figures"):
 
     # Interaction's properties.
     constant = 4. * np.pi**2.
-    softening = 1.e-4
+    softening = 1.e-2
     interaction = InverseSquareLaw(constant, softening)
 
     # Initial values.
