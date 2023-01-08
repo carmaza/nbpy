@@ -1,7 +1,10 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 
+import matplotlib.pyplot as plt
 import numpy as np
+
+import plot
 
 from inverse_square_law import InverseSquareLaw
 from leapfrog import Leapfrog
@@ -9,6 +12,7 @@ from random_distribution import RandomDistribution
 
 
 def run(N):
+
     # Particles' properties.
     masses = np.ones(N)
     initial_state = RandomDistribution()
@@ -27,16 +31,25 @@ def run(N):
     dt = 1.e-3
     number_of_timesteps = 10
     integrator = Leapfrog()
-    observe = True
+
+    # Observe parameters.
+    observing = True
+    figvol = plt.figure()
+    axvol = plt.axes(projection='3d')
 
     print("Loading initial data...")
     initial_state.set_variables(positions, velocities)
-    interaction.exert(accelerations, masses, positions)
+    if observing:
+        plot.positions_3d(figvol, axvol, 0, dt, positions)
     print("Initial data loaded.")
 
     print("Running evolution...")
-    for i in range(1, number_of_timesteps):
+    interaction.exert(accelerations, masses, positions)
+    for time_id in range(1, number_of_timesteps):
         integrator.evolve(positions, velocities, accelerations, dt, masses,
                           interaction)
+        if observing:
+            plot.positions_3d(figvol, axvol, time_id, dt, positions)
 
+    plt.close(figvol)
     print("Done!")
