@@ -1,3 +1,7 @@
 # Files resulting from plotters.
 *.pdf
 fig*
+
+# Build files and directories
+build*
+nbpy.*
