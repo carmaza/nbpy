@@ -12,7 +12,7 @@ from nbpy.leapfrog import Leapfrog
 from nbpy.random_distribution import RandomDistribution
 
 
-def run(N):
+def run(N, figure_folder="figures"):
 
     # Particles' properties.
     masses = np.ones(N)
@@ -37,7 +37,6 @@ def run(N):
     observing = True
     figvol = plt.figure()
     axvol = plt.axes(projection='3d')
-    figure_folder = "figures"
     if observing:
         util.create_folder(figure_folder)
 
