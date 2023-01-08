@@ -9,7 +9,7 @@ def positions_3d(fig,
                  time_id,
                  dt,
                  positions,
-                 folder="",
+                 folder,
                  zfill=6,
                  axis_off=False,
                  grid_off=True,
@@ -49,8 +49,8 @@ def positions_3d(fig,
 
     plt.title("elapsed time: {:1.3f} years".format(time_id * dt))
 
-    plt.savefig("figs/{}/{}".format(folder,
-                                    str(time_id).zfill(zfill)),
+    plt.savefig("{}/{}".format(folder,
+                               str(time_id).zfill(zfill)),
                 bbox_inches='tight',
                 dpi=300)
 

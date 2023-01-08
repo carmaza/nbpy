@@ -1,12 +1,11 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 
-import os
-
 import matplotlib.pyplot as plt
 import numpy as np
 
 import nbpy.plot as plot
+import nbpy.util as util
 
 from nbpy.inverse_square_law import InverseSquareLaw
 from nbpy.leapfrog import Leapfrog
@@ -38,18 +37,19 @@ def run(N):
     observing = True
     figvol = plt.figure()
     axvol = plt.axes(projection='3d')
+    figure_folder = "figures"
     if observing:
-        figs_folder = "figs"
-        try:
-            os.mkdir("./{}".format(figs_folder))
-            print("Local folder /{} created.".format(figs_folder))
-        except:
-            print("Local folder /{} already present.".format(figs_folder))
+        util.create_folder(figure_folder)
 
     print("Loading initial data...")
     initial_state.set_variables(positions, velocities)
     if observing:
-        plot.positions_3d(figvol, axvol, 0, dt, positions)
+        plot.positions_3d(figvol,
+                          axvol,
+                          0,
+                          dt,
+                          positions,
+                          folder=figure_folder)
     print("Initial data loaded.")
 
     print("Running evolution...")
@@ -58,7 +58,8 @@ def run(N):
         integrator.evolve(positions, velocities, accelerations, dt, masses,
                           interaction)
         if observing:
-            plot.positions_3d(figvol, axvol, time_id, dt, positions)
+            plot.positions_3d(figvol, axvol, time_id, dt, positions,
+                              figure_folder)
 
     plt.close(figvol)
     print("Done!")
