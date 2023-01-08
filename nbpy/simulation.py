@@ -1,14 +1,16 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 
+import os
+
 import matplotlib.pyplot as plt
 import numpy as np
 
-import plot
+import nbpy.plot as plot
 
-from inverse_square_law import InverseSquareLaw
-from leapfrog import Leapfrog
-from random_distribution import RandomDistribution
+from nbpy.inverse_square_law import InverseSquareLaw
+from nbpy.leapfrog import Leapfrog
+from nbpy.random_distribution import RandomDistribution
 
 
 def run(N):
@@ -36,6 +38,13 @@ def run(N):
     observing = True
     figvol = plt.figure()
     axvol = plt.axes(projection='3d')
+    if observing:
+        figs_folder = "figs"
+        try:
+            os.mkdir("./{}".format(figs_folder))
+            print("Local folder /{} created.".format(figs_folder))
+        except:
+            print("Local folder /{} already present.".format(figs_folder))
 
     print("Loading initial data...")
     initial_state.set_variables(positions, velocities)
