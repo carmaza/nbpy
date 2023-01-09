@@ -8,7 +8,7 @@ class Leapfrog:
     """
 
     @staticmethod
-    def evolve(pos, vel, acc, dt, masses, interaction, *argv):
+    def evolve(pos, vel, acc, dt, masses, interaction):
         """
         The algorithm to update the evolved variables.
 
@@ -29,9 +29,6 @@ class Leapfrog:
         `interaction` : obj
         The interaction from which to calculate the acceleration in terms of the
         position. Must have an `acceleration(pos, *argv)` member function.
-
-        `*argv`
-        Any additional arguments of `interaction.exert`.
 
         """
         vel += 0.5 * dt * acc
