@@ -38,7 +38,7 @@ class RandomDistribution:
 
         Parameters
         ----------
-        `positions, velocities` : ndarray, ndarray
+        `positions, velocities` : ndarray, ndarray [mutate]
         The N positions and velocities, represented as N-by-3 numpy arrays.
 
         """
