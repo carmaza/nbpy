@@ -1,10 +1,35 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
+"""
+Defines the following functions to plot simulation data:
+- positions_3d(axis, time, positions, folder, grid_off=True)
 
+"""
 import matplotlib.pyplot as plt
 
 
 def positions_3d(axis, time, positions, folder, grid_off=True):
+    """
+    Plot particles at their given 3d positions at the given time.
+
+    Parameters
+    ----------
+    `axis` : obj
+    The Matplotlib object containing the plot axis.
+
+    `time` : obj
+    The Time object representing the time of observation.
+
+    `positions` : ndarray
+    The positions at the given time, stored as a N-by-3 NumPy array.
+
+    `folder` : string
+    The local folder where to store the plot.
+
+    `grid_off` : bool (default: True)
+    Whether to turn off plot grid.
+    """
+
     axis.scatter(positions[:, 0],
                  positions[:, 1],
                  positions[:, 2],
