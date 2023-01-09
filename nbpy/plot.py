@@ -8,7 +8,6 @@ def positions_3d(ax,
                  time,
                  positions,
                  folder,
-                 zfill=6,
                  axis_off=False,
                  grid_off=True,
                  ticks_off=True):
@@ -44,11 +43,8 @@ def positions_3d(ax,
     ax.yaxis.set_pane_color(background_color + (0.9, ))
     ax.zaxis.set_pane_color(background_color)
 
-    plt.title("elapsed time: {:1.3f} years".format(time.value))
+    plt.title(f"elapsed time: {time.value:1.3f} years")
 
-    plt.savefig("{}/{}".format(folder,
-                               str(time.id_).zfill(zfill)),
-                bbox_inches='tight',
-                dpi=300)
+    plt.savefig(f"{folder}/{time.id_:06}", bbox_inches='tight', dpi=300)
 
     ax.clear()
