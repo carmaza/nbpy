@@ -43,12 +43,7 @@ def run(N, figure_folder="figures"):
     print("Loading initial data...")
     initial_state.set_variables(positions, velocities)
     if observing:
-        plot.positions_3d(figvol,
-                          axvol,
-                          0,
-                          dt,
-                          positions,
-                          folder=figure_folder)
+        plot.positions_3d(axvol, 0, dt, positions, figure_folder)
     print("Initial data loaded.")
 
     print("Running evolution...")
@@ -57,8 +52,7 @@ def run(N, figure_folder="figures"):
         integrator.evolve(positions, velocities, accelerations, dt, masses,
                           interaction)
         if observing:
-            plot.positions_3d(figvol, axvol, time_id, dt, positions,
-                              figure_folder)
+            plot.positions_3d(axvol, time_id, dt, positions, figure_folder)
 
     plt.close(figvol)
     print("Done!")

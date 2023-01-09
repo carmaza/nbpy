@@ -4,8 +4,7 @@
 import matplotlib.pyplot as plt
 
 
-def positions_3d(fig,
-                 ax,
+def positions_3d(ax,
                  time_id,
                  dt,
                  positions,
