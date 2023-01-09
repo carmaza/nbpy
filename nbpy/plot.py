@@ -5,15 +5,13 @@ import matplotlib.pyplot as plt
 
 
 def positions_3d(ax,
-                 time_id,
-                 dt,
+                 time,
                  positions,
                  folder,
                  zfill=6,
                  axis_off=False,
                  grid_off=True,
                  ticks_off=True):
-
     ax.scatter(positions[:, 0],
                positions[:, 1],
                positions[:, 2],
@@ -46,10 +44,10 @@ def positions_3d(ax,
     ax.yaxis.set_pane_color(background_color + (0.9, ))
     ax.zaxis.set_pane_color(background_color)
 
-    plt.title("elapsed time: {:1.3f} years".format(time_id * dt))
+    plt.title("elapsed time: {:1.3f} years".format(time.value))
 
     plt.savefig("{}/{}".format(folder,
-                               str(time_id).zfill(zfill)),
+                               str(time.id).zfill(zfill)),
                 bbox_inches='tight',
                 dpi=300)
 

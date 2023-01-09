@@ -10,6 +10,7 @@ import nbpy.util as util
 from nbpy.inverse_square_law import InverseSquareLaw
 from nbpy.leapfrog import Leapfrog
 from nbpy.random_distribution import RandomDistribution
+from nbpy.time import Time
 
 
 def run(N, figure_folder="figures"):
@@ -41,9 +42,10 @@ def run(N, figure_folder="figures"):
         util.create_folder(figure_folder)
 
     print("Loading initial data...")
+    time = Time(0, 0.)
     initial_state.set_variables(positions, velocities)
     if observing:
-        plot.positions_3d(axvol, 0, dt, positions, figure_folder)
+        plot.positions_3d(axvol, time, positions, figure_folder)
     print("Initial data loaded.")
 
     print("Running evolution...")
@@ -52,7 +54,8 @@ def run(N, figure_folder="figures"):
         integrator.evolve(positions, velocities, accelerations, dt, masses,
                           interaction)
         if observing:
-            plot.positions_3d(axvol, time_id, dt, positions, figure_folder)
+            time = Time(time_id, dt * time_id)
+            plot.positions_3d(axvol, time, positions, figure_folder)
 
     plt.close(figvol)
     print("Done!")
