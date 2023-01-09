@@ -4,13 +4,7 @@
 import matplotlib.pyplot as plt
 
 
-def positions_3d(ax,
-                 time,
-                 positions,
-                 folder,
-                 axis_off=False,
-                 grid_off=True,
-                 ticks_off=True):
+def positions_3d(ax, time, positions, folder, grid_off=True):
     ax.scatter(positions[:, 0],
                positions[:, 1],
                positions[:, 2],
@@ -26,16 +20,13 @@ def positions_3d(ax,
     if grid_off:
         ax.grid(False)
 
-    if ticks_off:
-        ax.set_xticks([-0.5, 0.5])
-        ax.set_xticklabels(["astronomical unit", ""])
-        ax.set_yticks([])
-        ax.set_zticks([])
+    ax.set_xticks([-0.5, 0.5])
+    ax.set_xticklabels(["astronomical unit", ""])
+    ax.set_yticks([])
+    ax.set_zticks([])
 
     ax.yaxis.labelpad = 12
     ax.yaxis.set_rotate_label(False)
-    if axis_off:
-        ax.set_axis_off()
 
     black = (0., 0., 0.)
     background_color = black
