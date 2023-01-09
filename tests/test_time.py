@@ -19,12 +19,12 @@ class TestTime(unittest.TestCase):
         seed = np.random.randint(0, 1e6)
         np.random.seed(seed)
 
-        id = np.random.randint(100)
+        id_ = np.random.randint(100)
         value = np.random.randn()
-        time = Time(id, value)
+        time = Time(id_, value)
 
-        self.assertEqual(time.id,
-                         id,
+        self.assertEqual(time.id_,
+                         id_,
                          msg="time ID differs from expected value. "
                          "RNG seed: {seed}.".format(seed=seed))
 

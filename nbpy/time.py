@@ -11,19 +11,19 @@ class Time:
 
     Attributes
     ----------
-    `time_id` : int
+    `id_` : int
     A unique ID.
 
     `value` : float
     The numerical value of the time instant.
     """
 
-    def __init__(self, id: int, value: float):
-        self._id = id
+    def __init__(self, id_: int, value: float):
+        self._id = id_
         self._value = value
 
     @property
-    def id(self) -> int:
+    def id_(self) -> int:
         """
         The time ID.
         """
