@@ -2,7 +2,10 @@
 # See LICENSE for details.
 """
 Defines the following functions of the phase space:
+
 - center_of_mass(masses, positions)
+  Computes the center of mass of the system.
+
 """
 
 import numpy as np
