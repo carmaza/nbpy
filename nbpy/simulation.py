@@ -1,13 +1,15 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
-
+"""
+Defines the function that runs the simulation:
+run(N, figure_folder="figures")
+"""
 import matplotlib.pyplot as plt
 import numpy as np
 
-import nbpy.plot as plot
-import nbpy.util as util
-import nbpy.phase_space as phase_space
-
+from nbpy import phase_space
+from nbpy import plot
+from nbpy import util
 from nbpy.inverse_square_law import InverseSquareLaw
 from nbpy.leapfrog import Leapfrog
 from nbpy.random_distribution import RandomDistribution
@@ -15,6 +17,19 @@ from nbpy.time import Time
 
 
 def run(N, figure_folder="figures"):
+    """
+    Run simulation.
+
+    Parameters
+    ----------
+
+    `N` : int
+    The number of particles.
+
+    `figure_folder` : string (default: "figures")
+    The local folder where to write figures if observing.
+
+    """
 
     # Particles' properties.
     masses = np.ones(N)
