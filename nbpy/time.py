@@ -1,7 +1,8 @@
 # Distributed under the MIT License.
 # See LICENSE for detais.
 """
-Defines the class Time.
+Defines class `Time`.
+
 """
 
 
@@ -11,14 +12,27 @@ class Time:
 
     Attributes
     ----------
+
     `id_` : int
     A unique ID.
 
     `value` : float
     The numerical value of the time instant.
+
     """
 
     def __init__(self, id_: int, value: float):
+        """
+        Parameters
+        ----------
+
+        `id_` : int
+        The unique ID.
+
+        `value` : float
+        The time value.
+
+        """
         self._id = id_
         self._value = value
 
@@ -26,6 +40,7 @@ class Time:
     def id_(self) -> int:
         """
         The time ID.
+
         """
         return self._id
 
@@ -33,5 +48,6 @@ class Time:
     def value(self) -> float:
         """
         The time value.
+
         """
         return self._value
