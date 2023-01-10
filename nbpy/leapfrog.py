@@ -1,5 +1,8 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
+"""
+Defines the class Leapfrog.
+"""
 
 
 class Leapfrog:
