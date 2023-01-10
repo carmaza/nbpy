@@ -1,5 +1,8 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
+"""
+Defines the class InverseSquareLaw.
+"""
 
 import numpy as np
 
@@ -8,11 +11,34 @@ class InverseSquareLaw:
     """
     Newton's classic inverse square law.
 
+    Attributes
+    ----------
+
+    `constant` : float
+    The gravitational constant.
+
+    `softening` : float
+    The softening parameter.
+
     """
 
     def __init__(self, constant: float, softening: float):
         self._constant = constant
         self._softening = softening
+
+    @property
+    def constant(self):
+        """
+        The gravitational constant.
+        """
+        return self._constant
+
+    @property
+    def softening(self):
+        """
+        The softening parameter for close encounters.
+        """
+        return self._softening
 
     def exert(self, accelerations, masses, positions):
         """
