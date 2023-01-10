@@ -3,7 +3,7 @@
 """
 Defines the following functions to plot simulation data:
 
-- positions_3d(axis, time, positions, folder, grid_off=True)
+- `positions_3d(axis, time, positions, folder, grid_off=True)`
   Plots particles at their 3-d positions as a function of time.
 
 """

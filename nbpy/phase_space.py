@@ -3,7 +3,7 @@
 """
 Defines the following functions of the phase space:
 
-- center_of_mass(masses, positions)
+- `center_of_mass(masses, positions)`
   Computes the center of mass of the system.
 
 """

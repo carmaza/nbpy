@@ -1,10 +1,11 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Includes the following utility functions:
+Defines the following utility functions:
 
-create_folder(folder)
-Creates a folder and throws exception if it can't.
+- `create_folder(folder)`
+  Creates a folder and throws exception if it can't.
+
 """
 
 import errno
@@ -18,8 +19,9 @@ def create_folder(path: str):
     Parameters
     ----------
 
-    path : str
+    `path` : str
     The path to the new folder, including its name.
+
     """
     try:
         os.makedirs(f"./{path}")

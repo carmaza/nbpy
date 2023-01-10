@@ -1,7 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Defines the `RandomDistribution` class.
+Defines class `RandomDistribution`.
 
 """
 
@@ -21,7 +21,7 @@ class RandomDistribution:
     Functions
     ---------
 
-    set_variables(positions, velocities)
+    `set_variables(positions, velocities)`
     Assigns positions and velocities to random numbers.
 
     """
