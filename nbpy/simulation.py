@@ -2,8 +2,10 @@
 # See LICENSE for details.
 """
 Defines the function that runs the simulation:
-run(N, figure_folder="figures")
+`run(N, figure_folder="figures")`
+
 """
+
 import matplotlib.pyplot as plt
 import numpy as np
 

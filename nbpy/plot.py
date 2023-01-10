@@ -7,6 +7,7 @@ Defines the following functions to plot simulation data:
   Plots particles at their 3-d positions as a function of time.
 
 """
+
 import matplotlib.pyplot as plt
 
 
