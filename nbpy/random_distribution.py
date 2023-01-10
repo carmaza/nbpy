@@ -2,6 +2,7 @@
 # See LICENSE for details.
 """
 Defines the `RandomDistribution` class.
+
 """
 
 import numpy as np
@@ -13,22 +14,34 @@ class RandomDistribution:
 
     Attributes
     ----------
+
     seed : int (default: 25092020)
     The RNG seed.
 
     Functions
     ---------
+
     set_variables(positions, velocities)
     Assigns positions and velocities to random numbers.
+
     """
 
     def __init__(self, seed=25092020):
+        """
+        Parameters
+        ----------
+
+        `seed` : int (default: 25092020)
+        The RNG seed.
+
+        """
         self._seed = seed
 
     @property
     def seed(self):
         """
         The RNG seed used to generate the distribution.
+
         """
         return self._seed
 
@@ -38,6 +51,7 @@ class RandomDistribution:
 
         Parameters
         ----------
+
         `positions, velocities` : ndarray, ndarray [mutate]
         The N positions and velocities, represented as N-by-3 numpy arrays.
 
