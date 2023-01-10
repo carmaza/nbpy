@@ -6,6 +6,7 @@ import numpy as np
 
 import nbpy.plot as plot
 import nbpy.util as util
+import nbpy.phase_space as phase_space
 
 from nbpy.inverse_square_law import InverseSquareLaw
 from nbpy.leapfrog import Leapfrog
@@ -45,7 +46,9 @@ def run(N, figure_folder="figures"):
     time = Time(0, 0.)
     initial_state.set_variables(positions, velocities)
     if observing:
-        plot.positions_3d(axvol, time, positions, figure_folder)
+        center_of_mass = phase_space.center_of_mass(masses, positions)
+        plot.positions_3d(axvol, time, positions, figure_folder,
+                          center_of_mass)
     print("Initial data loaded.")
 
     print("Running evolution...")
@@ -55,7 +58,9 @@ def run(N, figure_folder="figures"):
                           interaction)
         if observing:
             time = Time(time_id, dt * time_id)
-            plot.positions_3d(axvol, time, positions, figure_folder)
+            center_of_mass = phase_space.center_of_mass(masses, positions)
+            plot.positions_3d(axvol, time, positions, figure_folder,
+                              center_of_mass)
 
     plt.close(figvol)
     print("Done!")

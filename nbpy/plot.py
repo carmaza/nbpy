@@ -8,7 +8,12 @@ Defines the following functions to plot simulation data:
 import matplotlib.pyplot as plt
 
 
-def positions_3d(axis, time, positions, folder, grid_off=True):
+def positions_3d(axis,
+                 time,
+                 positions,
+                 folder,
+                 center_of_mass=None,
+                 grid_off=True):
     """
     Plot particles at their given 3d positions at the given time.
 
@@ -26,6 +31,9 @@ def positions_3d(axis, time, positions, folder, grid_off=True):
     `folder` : string
     The local folder where to store the plot.
 
+    `center_of_mass` : ndarray (default: None)
+    If given, then plot it along with the system.
+
     `grid_off` : bool (default: True)
     Whether to turn off plot grid.
     """
@@ -36,6 +44,14 @@ def positions_3d(axis, time, positions, folder, grid_off=True):
                  color='white',
                  depthshade=False,
                  s=1.)
+
+    if center_of_mass is not None:
+        axis.scatter(center_of_mass[0],
+                     center_of_mass[1],
+                     center_of_mass[2],
+                     color='red',
+                     depthshade=False,
+                     s=1.)
 
     half_side = 2.
     axis.set_xlim(-half_side, half_side)
