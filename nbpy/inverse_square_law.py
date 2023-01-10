@@ -21,6 +21,12 @@ class InverseSquareLaw:
     `softening` : float
     The softening parameter.
 
+    Functions
+    ---------
+
+    `exert(self, accelerations, masses, positions)`
+    Calculates the accelerations from the given parameters.
+
     """
 
     def __init__(self, constant: float, softening: float):
