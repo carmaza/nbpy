@@ -10,12 +10,21 @@ class Leapfrog:
     """
     The syncronized second-order Leapfrog integrator for oscillatory problems.
 
+    Functions
+    ---------
+
+    `evolve(pos, vel, acc, dt, masses, interaction)`
+    The algorithm to update the positions and velocities.
+
     """
 
     @staticmethod
     def evolve(pos, vel, acc, dt, masses, interaction):
         """
-        The algorithm to update the evolved variables.
+        Update positions and velocities.
+
+        Since it is needed in the calculation, this function also updates the
+        accelerations for the given interaction.
 
         Parameters
         ----------
@@ -33,7 +42,7 @@ class Leapfrog:
 
         `interaction` : obj
         The interaction from which to calculate the acceleration in terms of the
-        position. Must have an `acceleration(pos, *argv)` member function.
+        position. Must have an `exert(acc, masses, pos)` member function.
 
         """
         vel += 0.5 * dt * acc
