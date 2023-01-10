@@ -2,12 +2,14 @@
 # See LICENSE for details.
 """
 Defines the class Leapfrog.
+
 """
 
 
 class Leapfrog:
     """
     The syncronized second-order Leapfrog integrator for oscillatory problems.
+
     """
 
     @staticmethod
