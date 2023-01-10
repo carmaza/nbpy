@@ -2,7 +2,9 @@
 # See LICENSE for details.
 """
 Defines the following functions to plot simulation data:
+
 - positions_3d(axis, time, positions, folder, grid_off=True)
+  Plots particles at their 3-d positions as a function of time.
 
 """
 import matplotlib.pyplot as plt
@@ -15,10 +17,11 @@ def positions_3d(axis,
                  center_of_mass=None,
                  grid_off=True):
     """
-    Plot particles at their given 3d positions at the given time.
+    Plot particles at their 3-d positions at the given time.
 
     Parameters
     ----------
+
     `axis` : obj
     The Matplotlib object containing the plot axis.
 
@@ -36,6 +39,7 @@ def positions_3d(axis,
 
     `grid_off` : bool (default: True)
     Whether to turn off plot grid.
+
     """
 
     axis.scatter(positions[:, 0],
