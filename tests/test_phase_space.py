@@ -15,10 +15,15 @@ import nbpy.phase_space as phase_space
 
 class TestPhaseSpace(unittest.TestCase):
     """
-    Test functions in `phase_space` module.
+    Test functions in module `phase_space`.
+
     """
 
     def test(self):
+        """
+        Test `center_of_mass`.
+
+        """
 
         seed = np.random.randint(0, 1e6)
         np.random.seed(seed)

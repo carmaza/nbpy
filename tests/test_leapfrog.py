@@ -16,10 +16,15 @@ from nbpy.leapfrog import Leapfrog
 
 class TestLeapfrog(unittest.TestCase):
     """
-    Test functions in `Leapfrog` class.
+    Test class `Leapfrog`.
+
     """
 
     def test(self):
+        """
+        Test class and member functions.
+
+        """
 
         seed = np.random.randint(0, 1e6)
         np.random.seed(seed)

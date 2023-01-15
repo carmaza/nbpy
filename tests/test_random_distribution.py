@@ -15,10 +15,15 @@ from nbpy.random_distribution import RandomDistribution
 
 class TestRandomDistribution(unittest.TestCase):
     """
-    Test functions in `RandomDistribution` class.
+    Test class `RandomDistribution`.
+
     """
 
     def test(self):
+        """
+        Test class and member functions.
+
+        """
 
         seed = np.random.randint(0, 1e6)
 

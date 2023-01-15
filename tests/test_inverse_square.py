@@ -14,10 +14,15 @@ from nbpy.inverse_square_law import InverseSquareLaw
 
 class TestInverseSquareLaw(unittest.TestCase):
     """
-    Test functions in `InverseSquareLaw` class.
+    Test class `InverseSquareLaw`.
+
     """
 
     def test(self):
+        """
+        Test class and member functions.
+
+        """
         seed = np.random.randint(0, 1e6)
         np.random.seed(seed)
 

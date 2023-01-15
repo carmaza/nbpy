@@ -15,10 +15,15 @@ from nbpy.time import Time
 
 class TestTime(unittest.TestCase):
     """
-    Test `Time` class.
+    Test class `Time`.
+
     """
 
     def test(self):
+        """
+        Test class and member functions.
+
+        """
 
         seed = np.random.randint(0, 1e6)
         np.random.seed(seed)
