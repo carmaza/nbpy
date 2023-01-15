@@ -9,7 +9,6 @@ import unittest
 
 import numpy as np
 
-from context import nbpy
 from nbpy.inverse_square_law import InverseSquareLaw
 
 
@@ -54,7 +53,3 @@ class TestInverseSquareLaw(unittest.TestCase):
         self.assertTrue(np.allclose(accelerations, accelerations_expected),
                         msg="acceleration differs from expected value. "
                         f"RNG seed: {seed}.")
-
-
-if __name__ == "__main__":
-    unittest.main()

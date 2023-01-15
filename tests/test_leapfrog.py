@@ -8,8 +8,6 @@ import unittest
 
 import numpy as np
 
-from context import nbpy
-
 from nbpy.inverse_square_law import InverseSquareLaw
 from nbpy.leapfrog import Leapfrog
 
@@ -70,7 +68,3 @@ class TestLeapfrog(unittest.TestCase):
         self.assertTrue(np.allclose(acc, acc_fin),
                         msg="new acceleration differs from expected value. "
                         f"RNG seed: {seed}.")
-
-
-if __name__ == "__main__":
-    unittest.main()

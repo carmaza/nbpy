@@ -9,8 +9,6 @@ import unittest
 
 import numpy as np
 
-from context import nbpy
-
 from nbpy.time import Time
 
 
@@ -42,7 +40,3 @@ class TestTime(unittest.TestCase):
                                value,
                                msg="time value differs from expected value. "
                                f"RNG seed: {seed}.")
-
-
-if __name__ == "__main__":
-    unittest.main()

@@ -9,8 +9,6 @@ import unittest
 
 import numpy as np
 
-from context import nbpy
-
 from nbpy.random_distribution import RandomDistribution
 
 
@@ -44,7 +42,3 @@ class TestRandomDistribution(unittest.TestCase):
             np.allclose(velocities, rng.standard_normal((N, 3))),
             msg="gravitational energy differs from expected value. "
             f"RNG seed: {seed}.")
-
-
-if __name__ == "__main__":
-    unittest.main()

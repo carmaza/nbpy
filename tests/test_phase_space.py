@@ -9,9 +9,7 @@ import unittest
 
 import numpy as np
 
-from context import nbpy
-
-import nbpy.phase_space as phase_space
+from nbpy import phase_space
 
 
 class TestPhaseSpace(unittest.TestCase):
@@ -45,7 +43,3 @@ class TestPhaseSpace(unittest.TestCase):
         self.assertTrue(np.allclose(center_of_mass, center_of_mass_expected),
                         msg="center_of_mass differs from expected value. "
                         f"RNG seed: {seed}.")
-
-
-if __name__ == "__main__":
-    unittest.main()
