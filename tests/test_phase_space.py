@@ -5,10 +5,11 @@ Contains unit tests for functions in module `phase_space`.
 
 """
 
-from context import nbpy
+import unittest
 
 import numpy as np
-import unittest
+
+from context import nbpy
 
 import nbpy.phase_space as phase_space
 

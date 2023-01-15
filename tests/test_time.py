@@ -5,10 +5,11 @@ Contains unit tests for class `Time`.
 
 """
 
-from context import nbpy
+import unittest
 
 import numpy as np
-import unittest
+
+from context import nbpy
 
 from nbpy.time import Time
 

@@ -4,11 +4,11 @@
 Contains unit tests for class `Leapfrog`.
 
 """
-
-from context import nbpy
+import unittest
 
 import numpy as np
-import unittest
+
+from context import nbpy
 
 from nbpy.inverse_square_law import InverseSquareLaw
 from nbpy.leapfrog import Leapfrog

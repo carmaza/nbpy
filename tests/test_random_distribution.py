@@ -5,10 +5,11 @@ Contains unit tests for class `RandomDistribution`.
 
 """
 
-from context import nbpy
+import unittest
 
 import numpy as np
-import unittest
+
+from context import nbpy
 
 from nbpy.random_distribution import RandomDistribution
 

@@ -9,6 +9,7 @@ import unittest
 
 import numpy as np
 
+from context import nbpy
 from nbpy.inverse_square_law import InverseSquareLaw
 
 
