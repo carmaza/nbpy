@@ -34,7 +34,7 @@ class TestPhaseSpace(unittest.TestCase):
 
         self.assertTrue(np.allclose(center_of_mass, center_of_mass_expected),
                         msg="center_of_mass differs from expected value. "
-                        "RNG seed: {seed}.".format(seed=seed))
+                        f"RNG seed: {seed}.")
 
 
 if __name__ == "__main__":

@@ -52,15 +52,15 @@ class TestLeapfrog(unittest.TestCase):
 
         self.assertTrue(np.allclose(pos, pos_expected),
                         msg="new position differs from expected value. "
-                        "RNG seed: {seed}.".format(seed=seed))
+                        f"RNG seed: {seed}.")
 
         self.assertTrue(np.allclose(vel, vel_expected),
                         msg="new velocity differs from expected value. "
-                        "RNG seed: {seed}.".format(seed=seed))
+                        f"RNG seed: {seed}.")
 
         self.assertTrue(np.allclose(acc, acc_fin),
                         msg="new acceleration differs from expected value. "
-                        "RNG seed: {seed}.".format(seed=seed))
+                        f"RNG seed: {seed}.")
 
 
 if __name__ == "__main__":

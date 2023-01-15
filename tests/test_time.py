@@ -26,12 +26,12 @@ class TestTime(unittest.TestCase):
         self.assertEqual(time.id_,
                          id_,
                          msg="time ID differs from expected value. "
-                         "RNG seed: {seed}.".format(seed=seed))
+                         f"RNG seed: {seed}.")
 
         self.assertAlmostEqual(time.value,
                                value,
                                msg="time value differs from expected value. "
-                               "RNG seed: {seed}.".format(seed=seed))
+                               f"RNG seed: {seed}.")
 
 
 if __name__ == "__main__":

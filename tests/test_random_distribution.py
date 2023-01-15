@@ -28,12 +28,12 @@ class TestRandomDistribution(unittest.TestCase):
 
         self.assertTrue(np.allclose(positions, rng.standard_normal((N, 3))),
                         msg="positions differs from expected value. "
-                        "RNG seed: {seed}.".format(seed=seed))
+                        f"RNG seed: {seed}.")
 
         self.assertTrue(
             np.allclose(velocities, rng.standard_normal((N, 3))),
             msg="gravitational energy differs from expected value. "
-            "RNG seed: {seed}.".format(seed=seed))
+            f"RNG seed: {seed}.")
 
 
 if __name__ == "__main__":

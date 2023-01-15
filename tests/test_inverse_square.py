@@ -1,10 +1,9 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 
-from context import nbpy
+import unittest
 
 import numpy as np
-import unittest
 
 from nbpy.inverse_square_law import InverseSquareLaw
 
@@ -13,7 +12,6 @@ class TestInverseSquareLaw(unittest.TestCase):
     """
     Test functions in `InverseSquareLaw` class.
     """
-
     def test(self):
         seed = np.random.randint(0, 1e6)
         np.random.seed(seed)
@@ -44,7 +42,7 @@ class TestInverseSquareLaw(unittest.TestCase):
 
         self.assertTrue(np.allclose(accelerations, accelerations_expected),
                         msg="acceleration differs from expected value. "
-                        "RNG seed: {seed}.".format(seed=seed))
+                        f"RNG seed: {seed}.")
 
 
 if __name__ == "__main__":
