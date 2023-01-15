@@ -37,8 +37,8 @@ class TestPhaseSpace(unittest.TestCase):
         center_of_mass = phase_space.center_of_mass(masses, positions)
 
         center_of_mass_expected = np.zeros(3)
-        for k in range(len(masses)):
-            center_of_mass_expected += masses[k] * positions[k]
+        for k, mass_k in enumerate(masses):
+            center_of_mass_expected += mass_k * positions[k]
         center_of_mass_expected /= total_mass
 
         self.assertTrue(np.allclose(center_of_mass, center_of_mass_expected),
