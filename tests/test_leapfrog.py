@@ -1,5 +1,9 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
+"""
+Contains unit tests for class `Leapfrog`.
+
+"""
 
 from context import nbpy
 

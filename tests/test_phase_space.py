@@ -1,5 +1,9 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
+"""
+Contains unit tests for functions in module `phase_space`.
+
+"""
 
 from context import nbpy
 

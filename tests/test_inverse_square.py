@@ -1,5 +1,9 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
+"""
+Contains unit tests for class `InverseSquareLaw`.
+
+"""
 
 import unittest
 
@@ -12,6 +16,7 @@ class TestInverseSquareLaw(unittest.TestCase):
     """
     Test functions in `InverseSquareLaw` class.
     """
+
     def test(self):
         seed = np.random.randint(0, 1e6)
         np.random.seed(seed)
