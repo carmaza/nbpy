@@ -9,6 +9,7 @@ Defines the function that runs the simulation:
 import matplotlib.pyplot as plt
 import numpy as np
 
+from nbpy import io
 from nbpy import phase_space
 from nbpy import plot
 from nbpy import util
@@ -54,6 +55,7 @@ def run(N, figure_folder="figures"):
 
     # Observe parameters.
     observing = True
+    filename = "Data"
     figvol = plt.figure()
     axvol = plt.axes(projection='3d')
     if observing:
@@ -64,6 +66,7 @@ def run(N, figure_folder="figures"):
     initial_state.set_variables(positions, velocities)
     if observing:
         center_of_mass = phase_space.center_of_mass(masses, positions)
+        io.write_snapshot_to_disk(filename, "Particles", positions, time)
         plot.positions_3d(axvol, time, positions, figure_folder,
                           center_of_mass)
     print("Initial data loaded.")
@@ -76,6 +79,7 @@ def run(N, figure_folder="figures"):
         if observing:
             time = Time(time_id, dt * time_id)
             center_of_mass = phase_space.center_of_mass(masses, positions)
+            io.write_snapshot_to_disk(filename, "Particles", positions, time)
             plot.positions_3d(axvol, time, positions, figure_folder,
                               center_of_mass)
 
