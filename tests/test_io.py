@@ -42,7 +42,7 @@ class TestIO(unittest.TestCase):
         with h5py.File(filepath, "r") as readfile:
             dataset_written = readfile[groupname][f"{id_:06}"]
             self.assertTrue(np.allclose(data_to_write, dataset_written[:]),
-                            msg="time value differs from expected value. "
+                            msg="dataset written differs from dataset read. "
                             f"RNG seed: {seed}.")
             self.assertAlmostEqual(
                 dataset_written.attrs["TimeValue"],
