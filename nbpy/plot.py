@@ -3,12 +3,19 @@
 """
 Defines the following functions to plot simulation data:
 
+- `orbits_3d(filepath, groupname, figure_folder="figures")`
+  Plots time evolution of the orbits of the particles.
+
 - `positions_3d(axis, time, positions, folder, grid_off=True)`
-  Plots particles at their 3-d positions as a function of time.
+  Plots particles at their 3-d positions at a specific time.
 
 """
 
+import h5py
 import matplotlib.pyplot as plt
+
+from nbpy import util
+from nbpy.time import Time
 
 
 def positions_3d(axis,
@@ -85,3 +92,32 @@ def positions_3d(axis,
     plt.savefig(f"{folder}/{time.id_:06}", bbox_inches='tight', dpi=300)
 
     axis.clear()
+
+
+def orbits_3d(filepath, groupname, figure_folder="./figures"):
+    """
+    Plot time evolution of the orbits as a sequence of snapshots.
+
+    Parameters
+    ----------
+
+    `filepath` : str
+    The path to the file containing the data.
+
+    `groupname` : str
+    The HDF5 group name in the file.
+
+    `figure_folder` : str (default: "./figures")
+    The local folder where to store the figures.
+
+    """
+    fig = plt.figure()
+    axis = plt.axes(projection='3d')
+    util.create_folder(figure_folder)
+
+    with h5py.File(filepath, "r") as readfile:
+        for key, value in readfile[groupname].items():
+            time = Time(key, value.attrs["TimeValue"])
+            positions_3d(axis, time, value, figure_folder)
+
+    plt.close(fig)

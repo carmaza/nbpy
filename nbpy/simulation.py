@@ -2,24 +2,21 @@
 # See LICENSE for details.
 """
 Defines the function that runs the simulation:
-`run(N, figure_folder="figures")`
+
+- `run(N)`
 
 """
 
-import matplotlib.pyplot as plt
 import numpy as np
 
 from nbpy import io
-from nbpy import phase_space
-from nbpy import plot
-from nbpy import util
 from nbpy.inverse_square_law import InverseSquareLaw
 from nbpy.leapfrog import Leapfrog
 from nbpy.random_distribution import RandomDistribution
 from nbpy.time import Time
 
 
-def run(N, figure_folder="figures"):
+def run(N):
     """
     Run simulation.
 
@@ -28,9 +25,6 @@ def run(N, figure_folder="figures"):
 
     `N` : int
     The number of particles.
-
-    `figure_folder` : string (default: "figures")
-    The local folder where to write figures if observing.
 
     """
 
@@ -55,21 +49,17 @@ def run(N, figure_folder="figures"):
 
     # Observe parameters.
     observing = True
+    group = "Particles"
     filename = "Data"
-    figvol = plt.figure()
-    axvol = plt.axes(projection='3d')
-    if observing:
-        util.create_folder(figure_folder)
+    filepath = ""
 
     print("Loading initial data...")
     time = Time(0, 0.)
     initial_state.set_variables(positions, velocities)
-    if observing:
-        center_of_mass = phase_space.center_of_mass(masses, positions)
-        io.write_snapshot_to_disk(filename, "Particles", positions, time)
-        plot.positions_3d(axvol, time, positions, figure_folder,
-                          center_of_mass)
     print("Initial data loaded.")
+    if observing:
+        filepath = io.write_snapshot_to_disk(filename, group, positions, time)
+        print(f"Writing data to {filepath}")
 
     print("Running evolution...")
     interaction.exert(accelerations, masses, positions)
@@ -78,10 +68,7 @@ def run(N, figure_folder="figures"):
                           interaction)
         if observing:
             time = Time(time_id, dt * time_id)
-            center_of_mass = phase_space.center_of_mass(masses, positions)
-            io.write_snapshot_to_disk(filename, "Particles", positions, time)
-            plot.positions_3d(axvol, time, positions, figure_folder,
-                              center_of_mass)
+            filepath = io.write_snapshot_to_disk(filename, group, positions,
+                                                 time)
 
-    plt.close(figvol)
     print("Done!")
