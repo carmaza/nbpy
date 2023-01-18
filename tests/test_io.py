@@ -1,7 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Contains unit tests for functions in modio `io`.
+Contains unit tests for functions in module `io`.
 
 """
 
