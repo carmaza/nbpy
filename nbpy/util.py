@@ -24,10 +24,10 @@ def create_folder(path: str):
 
     """
     try:
-        os.makedirs(f"./{path}")
-        print(f"Local folder /{path} created.")
+        os.makedirs(f"{path}")
+        print(f"Folder {path} created.")
     except OSError as err:
         if err.errno == errno.EEXIST:
-            print(f"Local folder /{path} already exists.")
+            print(f"Local folder {path} already exists.")
         else:
             raise
