@@ -1,0 +1,14 @@
+[MESSAGES CONTROL]
+
+disable=duplicate-code,
+        too-few-public-methods,
+	too-many-arguments,
+	too-many-locals,
+
+[BASIC]
+
+good-names=N, # The number of particles in the simulation.
+	   i, j, k, # Various dummy indices.
+	   x, y, z, # Cartesian coordinates.
+	   dt, # The timestep.
+           _
