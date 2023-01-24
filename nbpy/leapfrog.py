@@ -5,6 +5,8 @@ Defines class `Leapfrog`.
 
 """
 
+import numpy.typing as npt
+
 
 class Leapfrog:
     """
@@ -19,7 +21,8 @@ class Leapfrog:
     """
 
     @staticmethod
-    def evolve(pos, vel, acc, dt, masses, interaction):
+    def evolve(pos: npt.NDArray, vel: npt.NDArray, acc: npt.NDArray, dt: float,
+               masses: npt.NDArray, interaction) -> None:
         """
         Update positions and velocities.
 
@@ -29,7 +32,7 @@ class Leapfrog:
         Parameters
         ----------
 
-        `pos, vel, acc` : ndarray, ndarray, ndarray [mutate]
+        `pos, vel, acc` : numpy.typing.NDArray, numpy.typing.NDArray, numpy.typing.NDArray [mutate]
         The positions, velocities, and accelerations of the system. They must
         have the same array shape among each other.
 
@@ -37,7 +40,7 @@ class Leapfrog:
         The (fixed) time step. Must be lower than twice the characteristic
         oscillation period.
 
-        `masses` : ndarray
+        `masses` : numpy.typing.NDArray
         The masses of the particles.
 
         `interaction` : obj

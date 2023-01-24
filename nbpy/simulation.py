@@ -16,7 +16,7 @@ from nbpy.random_distribution import RandomDistribution
 from nbpy.time import Time
 
 
-def run(N):
+def run(N: int) -> None:
     """
     Run simulation.
 

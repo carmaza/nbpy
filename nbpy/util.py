@@ -12,7 +12,7 @@ import errno
 import os
 
 
-def create_folder(path: str):
+def create_folder(path: str) -> None:
     """
     Create folder given the path.
 

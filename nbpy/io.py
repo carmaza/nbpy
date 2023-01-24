@@ -4,16 +4,20 @@
 Defines the following Input/Output functions:
 
 - `write_snapshot_to_disk(filename, groupname, data, time)`
-  Write the given data to a HDF5 file.
+  Writes the given data to a HDF5 file.
 
 """
 
 import os
 
 import h5py
+import numpy.typing as npt
+
+from nbpy.time import Time
 
 
-def write_snapshot_to_disk(filename, groupname, data, time):
+def write_snapshot_to_disk(filename: str, groupname: str, data: npt.NDArray,
+                           time: Time) -> str:
     """
     Write the given data to a HDF5 group in the given file. The data
     corresponds to variables at the given time.
@@ -27,10 +31,10 @@ def write_snapshot_to_disk(filename, groupname, data, time):
     `groupname`: string
     The name of the group in the HDF5 File object.
 
-    `data` : ndarray
+    `data` : numpy.typing.NDArray
     The data, stored as a numpy array.
 
-    `time` : obj
+    `time` : nbpy.Time
     The `Time` object representing the time of observation.
 
     Returns
@@ -40,6 +44,7 @@ def write_snapshot_to_disk(filename, groupname, data, time):
     The _absolute_ path to the file written.
 
     """
+    path = groupname + filename
     path = f"./{filename}.hdf5"
     with h5py.File(path, "a") as outfile:
         dataset_id = f"{time.id_:06}"

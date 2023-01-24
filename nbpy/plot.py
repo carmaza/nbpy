@@ -11,19 +11,22 @@ Defines the following functions to plot simulation data:
 
 """
 
+from typing import Optional
+
 import h5py
 import matplotlib.pyplot as plt
+import numpy.typing as npt
 
 from nbpy import util
 from nbpy.time import Time
 
 
 def positions_3d(axis,
-                 time,
-                 positions,
-                 folder,
-                 center_of_mass=None,
-                 grid_off=True):
+                 time: Time,
+                 positions: npt.NDArray,
+                 folder: str,
+                 center_of_mass: Optional[npt.NDArray] = None,
+                 grid_off: bool = True) -> None:
     """
     Plot particles at their 3-d positions at the given time.
 
@@ -33,16 +36,16 @@ def positions_3d(axis,
     `axis` : obj
     The Matplotlib object containing the plot axis.
 
-    `time` : obj
+    `time` : nbpy.Time
     The Time object representing the time of observation.
 
-    `positions` : ndarray
+    `positions` : numpy.typing.NDArray
     The positions at the given time, stored as a N-by-3 NumPy array.
 
     `folder` : string
     The local folder where to store the plot.
 
-    `center_of_mass` : ndarray (default: None)
+    `center_of_mass` : numpy.typing.NDArray (default: None)
     If given, then plot it along with the system.
 
     `grid_off` : bool (default: True)
@@ -94,7 +97,9 @@ def positions_3d(axis,
     axis.clear()
 
 
-def orbits_3d(filepath, groupname, figure_folder="./figures"):
+def orbits_3d(filepath: str,
+              groupname: str,
+              figure_folder: str = "./figures") -> None:
     """
     Plot time evolution of the orbits as a sequence of snapshots.
 

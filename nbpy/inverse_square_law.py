@@ -6,6 +6,7 @@ Defines class `InverseSquareLaw`.
 """
 
 import numpy as np
+import numpy.typing as npt
 
 
 class InverseSquareLaw:
@@ -45,7 +46,7 @@ class InverseSquareLaw:
         self._softening = softening
 
     @property
-    def constant(self):
+    def constant(self) -> float:
         """
         The gravitational constant.
 
@@ -53,28 +54,29 @@ class InverseSquareLaw:
         return self._constant
 
     @property
-    def softening(self):
+    def softening(self) -> float:
         """
         The softening parameter for close encounters.
 
         """
         return self._softening
 
-    def exert(self, accelerations, masses, positions):
+    def exert(self, accelerations: npt.NDArray, masses: npt.NDArray,
+              positions: npt.NDArray) -> None:
         """
         Compute accelerations of all interacting particles.
 
         Parameters
         ----------
 
-        `accelerations` : ndarray [mutates]
-        N x 3 array to store the accelerations of all N particles.
+        `accelerations` : numpy.typing.NDArray [mutates]
+        N-by-3 array to store the accelerations of all N particles.
 
-        `masses` : ndarray
-        N x 1 array containing the masses of all N particles.
+        `masses` : numpy.typing.NDArray
+        N-by-1 array containing the masses of all N particles.
 
-        `positions` : ndarray
-        N x 3 array containing the positions of all N particles.
+        `positions` : numpy.typing.NDArray
+        N-by-3 array containing the positions of all N particles.
 
         """
         # `x` stores x coordinates of all particles, and similarly for y and z.

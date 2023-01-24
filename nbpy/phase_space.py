@@ -9,25 +9,26 @@ Defines the following functions of the phase space:
 """
 
 import numpy as np
+import numpy.typing as npt
 
 
-def center_of_mass(masses, positions):
+def center_of_mass(masses: npt.NDArray, positions: npt.NDArray) -> npt.NDArray:
     """
     Compute the center of mass of the system.
 
     Parameters
     ----------
 
-    `masses` : ndarray
-    The masses, stored as an N-dimensional NumPy array.
+    `masses` : numpy.typing.NDArray
+    The masses, stored as an N-dimensional array.
 
-    `positions` : ndarray
-    The 3-d positions of the particles, stored as N-by-3 NumPy arrays.
+    `positions` : np.typing.NDarray
+    The 3-d positions of the particles, stored as an N-by-3 array.
 
     Returns
     -------
 
-    out : ndarray
+    out : numpy.typing.NDArray
     The center of mass.
 
     """

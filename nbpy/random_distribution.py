@@ -6,6 +6,7 @@ Defines class `RandomDistribution`.
 """
 
 import numpy as np
+import numpy.typing as npt
 
 
 class RandomDistribution:
@@ -26,7 +27,7 @@ class RandomDistribution:
 
     """
 
-    def __init__(self, seed=25092020):
+    def __init__(self, seed: int = 25092020):
         """
         Parameters
         ----------
@@ -38,22 +39,23 @@ class RandomDistribution:
         self._seed = seed
 
     @property
-    def seed(self):
+    def seed(self) -> int:
         """
         The RNG seed used to generate the distribution.
 
         """
         return self._seed
 
-    def set_variables(self, positions, velocities):
+    def set_variables(self, positions: npt.NDArray,
+                      velocities: npt.NDArray) -> None:
         """
         Assign `positions` and `velocities` to random numbers.
 
         Parameters
         ----------
 
-        `positions, velocities` : ndarray, ndarray [mutate]
-        The N positions and velocities, represented as N-by-3 numpy arrays.
+        `positions, velocities` : numpy.typing.NDArray, numpy.typing.NDArray [mutate]
+        The N positions and velocities, represented as N-by-3 arrays.
 
         """
         N = positions.shape[0]
