@@ -9,7 +9,7 @@ import unittest
 
 import numpy as np
 
-from nbpy.time import Time
+from nbpy.evolution import Time
 
 
 class TestTime(unittest.TestCase):

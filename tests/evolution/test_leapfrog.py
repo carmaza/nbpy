@@ -8,8 +8,8 @@ import unittest
 
 import numpy as np
 
-from nbpy.inverse_square_law import InverseSquareLaw
-from nbpy.leapfrog import Leapfrog
+from nbpy.evolution import InverseSquareLaw
+from nbpy.evolution import Leapfrog
 
 
 class TestLeapfrog(unittest.TestCase):

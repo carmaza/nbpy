@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 import numpy.typing as npt
 
 from nbpy import util
-from nbpy.time import Time
+from nbpy.evolution import Time
 
 
 def positions_3d(axis,

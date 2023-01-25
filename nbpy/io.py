@@ -13,7 +13,7 @@ import os
 import h5py
 import numpy.typing as npt
 
-from nbpy.time import Time
+from nbpy.evolution import Time
 
 
 def write_snapshot_to_disk(filename: str, groupname: str, data: npt.NDArray,

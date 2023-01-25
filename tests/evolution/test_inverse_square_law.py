@@ -9,7 +9,7 @@ import unittest
 
 import numpy as np
 
-from nbpy.inverse_square_law import InverseSquareLaw
+from nbpy.evolution import InverseSquareLaw
 
 
 class TestInverseSquareLaw(unittest.TestCase):

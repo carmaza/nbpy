@@ -12,7 +12,7 @@ import h5py
 import numpy as np
 
 from nbpy import io
-from nbpy.time import Time
+from nbpy.evolution import Time
 
 
 class TestIO(unittest.TestCase):

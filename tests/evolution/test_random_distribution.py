@@ -9,7 +9,7 @@ import unittest
 
 import numpy as np
 
-from nbpy.random_distribution import RandomDistribution
+from nbpy.evolution import RandomDistribution
 
 
 class TestRandomDistribution(unittest.TestCase):

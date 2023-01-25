@@ -9,11 +9,8 @@ Defines the function that runs the simulation:
 
 import numpy as np
 
+from nbpy import evolution
 from nbpy import io
-from nbpy.inverse_square_law import InverseSquareLaw
-from nbpy.leapfrog import Leapfrog
-from nbpy.random_distribution import RandomDistribution
-from nbpy.time import Time
 
 
 def run(N: int) -> None:
@@ -30,12 +27,12 @@ def run(N: int) -> None:
 
     # Particles' properties.
     masses = np.ones(N)
-    initial_state = RandomDistribution()
+    initial_state = evolution.RandomDistribution()
 
     # Interaction's properties.
     constant = 4. * np.pi**2.
     softening = 1.e-2
-    interaction = InverseSquareLaw(constant, softening)
+    interaction = evolution.InverseSquareLaw(constant, softening)
 
     # Initial values.
     positions = np.empty((N, 3))
@@ -45,7 +42,7 @@ def run(N: int) -> None:
     # Evolution parameters.
     dt = 1.e-3
     number_of_timesteps = 10
-    integrator = Leapfrog()
+    integrator = evolution.Leapfrog()
 
     # Observe parameters.
     observing = True
@@ -54,7 +51,7 @@ def run(N: int) -> None:
     filepath = ""
 
     print("Loading initial data...")
-    time = Time(0, 0.)
+    time = evolution.Time(0, 0.)
     initial_state.set_variables(positions, velocities)
     print("Initial data loaded.")
     if observing:
@@ -67,7 +64,7 @@ def run(N: int) -> None:
         integrator.evolve(positions, velocities, accelerations, dt, masses,
                           interaction)
         if observing:
-            time = Time(time_id, dt * time_id)
+            time = evolution.Time(time_id, dt * time_id)
             filepath = io.write_snapshot_to_disk(filename, group, positions,
                                                  time)
 
