@@ -18,27 +18,43 @@ class TestRandomDistribution(unittest.TestCase):
 
     """
 
-    def test(self):
+    @classmethod
+    def setUpClass(cls):
+        cls._seed = np.random.randint(0, 1e6)
+        np.random.seed(cls._seed)
+
+        # The member `seed` coincides with the seed used for testing using RNGs.
+        cls._dist = RandomDistribution(cls._seed)
+
+    def test_attribute_interface(self):
         """
-        Test class and member functions.
+        Test interface for class attributes.
 
         """
+        self.assertEqual(self._seed,
+                         self._dist.seed,
+                         msg="value of seed differs from expected value."
+                         f"RNG seed: {self._seed}.")
 
-        seed = np.random.randint(0, 1e6)
+    def test_set_variables(self):
+        """
+        Test implementation of member function `set_variables`.
+
+        """
 
         N = np.random.randint(2, 10)
         positions = np.zeros((N, 3))
         velocities = np.zeros((N, 3))
-        RandomDistribution(seed).set_variables(positions, velocities)
+        self._dist.set_variables(positions, velocities)
 
         # Reset RNG to previous seed in order to obtain same random arrays.
-        rng = np.random.default_rng(seed)
+        rng = np.random.default_rng(self._seed)
 
         self.assertTrue(np.allclose(positions, rng.standard_normal((N, 3))),
                         msg="positions differs from expected value. "
-                        f"RNG seed: {seed}.")
+                        f"RNG seed: {self._seed}.")
 
         self.assertTrue(
             np.allclose(velocities, rng.standard_normal((N, 3))),
             msg="gravitational energy differs from expected value. "
-            f"RNG seed: {seed}.")
+            f"RNG seed: {self._seed}.")
