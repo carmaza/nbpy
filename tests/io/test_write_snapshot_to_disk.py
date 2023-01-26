@@ -1,7 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Contains unit tests for functions in module `io`.
+Contains unit tests for `io.write_snapshot_to_disk`.
 
 """
 
@@ -15,15 +15,15 @@ from nbpy import io
 from nbpy.evolution import Time
 
 
-class TestIO(unittest.TestCase):
+class TestWriteSnapshotToDisk(unittest.TestCase):
     """
-    Test functions in module `io`.
+    Test `io.write_snapshot_to_disk`.
 
     """
 
-    def test_write_to_disk(self):
+    def test(self):
         """
-        Test function `write_snapshot_to_disk`.
+        Test general writing using a temporary file.
 
         """
 
