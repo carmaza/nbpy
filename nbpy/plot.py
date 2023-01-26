@@ -17,8 +17,8 @@ import h5py
 import matplotlib.pyplot as plt
 import numpy.typing as npt
 
-from nbpy import util
 from nbpy.evolution import Time
+from nbpy.io import util
 
 
 def positions_3d(axis,

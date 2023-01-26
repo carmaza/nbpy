@@ -1,7 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Defines the following Input/Output functions:
+Defines the following function:
 
 - `write_snapshot_to_disk(filename, groupname, data, time)`
   Writes the given data to a HDF5 file.
