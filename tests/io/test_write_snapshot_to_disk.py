@@ -17,11 +17,11 @@ from nbpy.evolution import Time
 
 class TestWriteSnapshotToDisk(unittest.TestCase):
     """
-    Test `io.write_snapshot_to_disk`.
+    Test function `io.write_snapshot_to_disk`.
 
     """
 
-    def test(self):
+    def test_implementation(self):
         """
         Test general writing using a temporary file.
 
