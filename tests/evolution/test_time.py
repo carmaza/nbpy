@@ -18,25 +18,26 @@ class TestTime(unittest.TestCase):
 
     """
 
-    def test(self):
+    @classmethod
+    def setUpClass(cls):
+        cls._seed = np.random.randint(0, 1e6)
+        np.random.seed(cls._seed)
+
+        cls._id_ = np.random.randint(100)
+        cls._value = np.random.randn()
+        cls._time = Time(cls._id_, cls._value)
+
+    def test_attribute_interface(self):
         """
-        Test class and member functions.
+        Test interface for class attributes.
 
         """
-
-        seed = np.random.randint(0, 1e6)
-        np.random.seed(seed)
-
-        id_ = np.random.randint(100)
-        value = np.random.randn()
-        time = Time(id_, value)
-
-        self.assertEqual(time.id_,
-                         id_,
+        self.assertEqual(self._time.id_,
+                         self._id_,
                          msg="time ID differs from expected value. "
-                         f"RNG seed: {seed}.")
+                         f"RNG seed: {self._seed}.")
 
-        self.assertAlmostEqual(time.value,
-                               value,
+        self.assertAlmostEqual(self._time.value,
+                               self._value,
                                msg="time value differs from expected value. "
-                               f"RNG seed: {seed}.")
+                               f"RNG seed: {self._seed}.")
