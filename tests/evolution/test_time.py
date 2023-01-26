@@ -1,7 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Contains unit tests for class `Time`.
+Contains unit tests for class `evolution.Time`.
 
 """
 
@@ -14,7 +14,7 @@ from nbpy.evolution import Time
 
 class TestTime(unittest.TestCase):
     """
-    Test class `Time`.
+    Test class `evolution.Time`.
 
     """
 

@@ -1,7 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Contains unit tests for class `Leapfrog`.
+Contains unit tests for class `evolution.Leapfrog`.
 
 """
 import unittest
@@ -14,7 +14,7 @@ from nbpy.evolution import Leapfrog
 
 class TestLeapfrog(unittest.TestCase):
     """
-    Test class `Leapfrog`.
+    Test class `evolution.Leapfrog`.
 
     """
 

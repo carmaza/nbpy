@@ -1,7 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Contains unit tests for class `RandomDistribution`.
+Contains unit tests for class `evolution.RandomDistribution`.
 
 """
 
@@ -14,7 +14,7 @@ from nbpy.evolution import RandomDistribution
 
 class TestRandomDistribution(unittest.TestCase):
     """
-    Test class `RandomDistribution`.
+    Test class `evolution.RandomDistribution`.
 
     """
 

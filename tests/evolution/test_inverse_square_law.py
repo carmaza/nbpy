@@ -1,7 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Contains unit tests for class `InverseSquareLaw`.
+Contains unit tests for class `evolution.InverseSquareLaw`.
 
 """
 
@@ -14,7 +14,7 @@ from nbpy.evolution import InverseSquareLaw
 
 class TestInverseSquareLaw(unittest.TestCase):
     """
-    Test class `InverseSquareLaw`.
+    Test class `evolution.InverseSquareLaw`.
 
     """
 
