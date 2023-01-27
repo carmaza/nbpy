@@ -1,7 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Contains unit tests for functions in module `phase_space`.
+Contains unit tests for `phasespace.center_of_mass`.
 
 """
 
@@ -9,18 +9,18 @@ import unittest
 
 import numpy as np
 
-from nbpy import phase_space
+from nbpy import phasespace
 
 
-class TestPhaseSpace(unittest.TestCase):
+class TestCenterOfMass(unittest.TestCase):
     """
-    Test functions in module `phase_space`.
+    Test `phasespace.center_of_mass`.
 
     """
 
     def test(self):
         """
-        Test `center_of_mass`.
+        Test general implementation.
 
         """
 
@@ -33,7 +33,7 @@ class TestPhaseSpace(unittest.TestCase):
         positions = np.random.randn(N, dim)
 
         total_mass = sum(masses)
-        center_of_mass = phase_space.center_of_mass(masses, positions)
+        center_of_mass = phasespace.center_of_mass(masses, positions)
 
         center_of_mass_expected = np.zeros(3)
         for k, mass_k in enumerate(masses):

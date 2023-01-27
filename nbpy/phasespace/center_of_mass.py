@@ -1,7 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Defines the following functions of the phase space:
+Defines the following function of the phase space:
 
 - `center_of_mass(masses, positions)`
   Computes the center of mass of the system.
