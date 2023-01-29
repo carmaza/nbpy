@@ -3,7 +3,7 @@
 """
 Defines the function that runs the simulation:
 
-- `run(N)`
+- `run(inputfile)`
 
 """
 
@@ -13,59 +13,59 @@ from nbpy import evolution
 from nbpy import io
 
 
-def run(N: int) -> None:
+def run(inputfile: str) -> None:
     """
-    Run simulation.
+    Run simulation using options in YAML input file.
 
     Parameters
     ----------
 
-    `N` : int
-    The number of particles.
+    `inputfile` : str
+    The name of the YAML input file, without any extension.
 
     """
+    options = io.input_from_yaml(inputfile)
 
-    # Particles' properties.
+    particle_opts = options["Particles"]
+    N = particle_opts["N"]
     masses = np.ones(N)
-    initial_state = evolution.RandomDistribution()
+
+    evolution_opts = options["Evolution"]
+    dt = evolution_opts["InitialDt"]
+    integrator = evolution.Leapfrog()
+
+    observer_opts = options["Observers"]
+    observing = observer_opts["Observing"]
+    group = observer_opts["Groupname"]
+    filename = observer_opts["Filename"]
 
     # Interaction's properties.
     constant = 4. * np.pi**2.
     softening = 1.e-2
     interaction = evolution.InverseSquareLaw(constant, softening)
 
-    # Initial values.
+    # These variables will hold phase space for each timestep.
     positions = np.empty((N, 3))
     velocities = np.empty((N, 3))
     accelerations = np.empty((N, 3))
 
-    # Evolution parameters.
-    dt = 1.e-3
-    number_of_timesteps = 10
-    integrator = evolution.Leapfrog()
-
-    # Observe parameters.
-    observing = True
-    group = "Particles"
-    filename = "Data"
-    filepath = ""
-
     print("Loading initial data...")
     time = evolution.Time(0, 0.)
+    initial_state = evolution.RandomDistribution()
     initial_state.set_variables(positions, velocities)
     print("Initial data loaded.")
+
     if observing:
         filepath = io.write_snapshot_to_disk(filename, group, positions, time)
         print(f"Writing data to {filepath}")
 
     print("Running evolution...")
     interaction.exert(accelerations, masses, positions)
-    for time_id in range(1, number_of_timesteps):
+    for time_id in range(1, evolution_opts["Timesteps"]):
         integrator.evolve(positions, velocities, accelerations, dt, masses,
                           interaction)
         if observing:
             time = evolution.Time(time_id, dt * time_id)
             filepath = io.write_snapshot_to_disk(filename, group, positions,
                                                  time)
-
     print("Done!")

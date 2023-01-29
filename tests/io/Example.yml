@@ -1,0 +1,11 @@
+Particles:
+  N: 50
+
+Evolution:
+  InitialDt: 1.e-3
+  Timesteps: 10
+
+Observers:
+  Observing: True
+  Filename: Data
+  Groupname: Particles
