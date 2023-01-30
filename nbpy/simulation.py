@@ -32,6 +32,7 @@ def run(inputfile: str) -> None:
 
     evolution_opts = options["Evolution"]
     dt = evolution_opts["InitialDt"]
+    timesteps = evolution_opts["Timesteps"]
     integrator = evolution.Leapfrog()
 
     observer_opts = options["Observers"]
@@ -61,7 +62,7 @@ def run(inputfile: str) -> None:
 
     print("Running evolution...")
     interaction.exert(accelerations, masses, positions)
-    for time_id in range(1, evolution_opts["Timesteps"]):
+    for time_id in range(1, timesteps):
         integrator.evolve(positions, velocities, accelerations, dt, masses,
                           interaction)
         if observing:
