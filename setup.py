@@ -19,5 +19,7 @@ setup(name='nbpy',
       ],
       keywords='astrophysics galactic n-body newton gravity',
       packages=find_packages(),
-      install_requires=['h5py>=3.7.0', 'matplotlib>=3.6.0', 'numpy>=1.23.0'],
+      install_requires=[
+          'h5py>=3.7.0', 'matplotlib>=3.6.0', 'numpy>=1.23.0', 'yaml>=5.4.1'
+      ],
       python_requires='>=3.10')
