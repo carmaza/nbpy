@@ -8,8 +8,10 @@ Defines class `InverseSquareLaw`.
 import numpy as np
 import numpy.typing as npt
 
+from .interaction import Interaction
 
-class InverseSquareLaw:
+
+class InverseSquareLaw(Interaction):
     """
     Newton's classic inverse square law.
 
