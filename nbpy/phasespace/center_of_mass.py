@@ -3,7 +3,7 @@
 """
 Defines the following function of the phase space:
 
-- `center_of_mass(masses, positions)`
+- `center_of_mass(masses, phsp)`
   Computes the center of mass of the system.
 
 """
@@ -24,8 +24,8 @@ def center_of_mass(masses: npt.NDArray, phsp: PhaseSpace) -> npt.NDArray:
     `masses` : numpy.typing.NDArray
     The masses, stored as an N-dimensional array.
 
-    `positions` : np.typing.NDarray
-    The 3-d positions of the particles, stored as an N-by-3 array.
+    `phsp` : nbpy.phasespace.PhaseSpace
+    A `PhaseSpace` object containing the positions of the system.
 
     Returns
     -------
