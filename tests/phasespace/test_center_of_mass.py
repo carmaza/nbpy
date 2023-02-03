@@ -35,7 +35,7 @@ class TestCenterOfMass(unittest.TestCase):
         phsp.set_positions(np.random.randn(N, dim))
 
         total_mass = sum(masses)
-        center_of_mass = phasespace.center_of_mass(masses, phsp)
+        center_of_mass = phasespace.center_of_mass(phsp, masses)
 
         center_of_mass_expected = np.zeros(3)
         for k, mass_k in enumerate(masses):
