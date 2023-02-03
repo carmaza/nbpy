@@ -11,8 +11,10 @@ Defines the following function of the phase space:
 import numpy as np
 import numpy.typing as npt
 
+from .phase_space import PhaseSpace
 
-def center_of_mass(masses: npt.NDArray, positions: npt.NDArray) -> npt.NDArray:
+
+def center_of_mass(masses: npt.NDArray, phsp: PhaseSpace) -> npt.NDArray:
     """
     Compute the center of mass of the system.
 
@@ -32,4 +34,4 @@ def center_of_mass(masses: npt.NDArray, positions: npt.NDArray) -> npt.NDArray:
     The center of mass.
 
     """
-    return np.matmul(masses, positions) / np.sum(masses)
+    return np.matmul(masses, phsp.positions) / np.sum(masses)

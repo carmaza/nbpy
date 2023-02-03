@@ -30,14 +30,16 @@ class TestCenterOfMass(unittest.TestCase):
         dim = 3
         N = np.random.randint(2, 10)
         masses = np.random.rand(N)
-        positions = np.random.randn(N, dim)
+
+        phsp = phasespace.PhaseSpace(N)
+        phsp.set_positions(np.random.randn(N, dim))
 
         total_mass = sum(masses)
-        center_of_mass = phasespace.center_of_mass(masses, positions)
+        center_of_mass = phasespace.center_of_mass(masses, phsp)
 
         center_of_mass_expected = np.zeros(3)
         for k, mass_k in enumerate(masses):
-            center_of_mass_expected += mass_k * positions[k]
+            center_of_mass_expected += mass_k * phsp.positions[k]
         center_of_mass_expected /= total_mass
 
         self.assertTrue(np.allclose(center_of_mass, center_of_mass_expected),
