@@ -8,6 +8,8 @@ import abc
 
 import numpy.typing as npt
 
+from nbpy.phasespace import PhaseSpace
+
 
 class Interaction(metaclass=abc.ABCMeta):
     """
@@ -16,8 +18,7 @@ class Interaction(metaclass=abc.ABCMeta):
     """
 
     @abc.abstractmethod
-    def exert(self, accelerations: npt.NDArray, masses: npt.NDArray,
-              positions: npt.NDArray) -> None:
+    def exert(self, phsp: PhaseSpace, masses: npt.NDArray) -> None:
         """
-        Calculate the accelerations in terms of the phase space.
+        Set the accelerations in terms of the phase space.
         """

@@ -10,6 +10,7 @@ import unittest
 import numpy as np
 
 from nbpy.evolution import RandomDistribution
+from nbpy.phasespace import PhaseSpace
 
 
 class TestRandomDistribution(unittest.TestCase):
@@ -43,18 +44,18 @@ class TestRandomDistribution(unittest.TestCase):
         """
 
         N = np.random.randint(2, 10)
-        positions = np.zeros((N, 3))
-        velocities = np.zeros((N, 3))
-        self._dist.set_variables(positions, velocities)
+        phsp = PhaseSpace(N)
+        self._dist.set_variables(phsp)
 
         # Reset RNG to previous seed in order to obtain same random arrays.
         rng = np.random.default_rng(self._seed)
 
-        self.assertTrue(np.allclose(positions, rng.standard_normal((N, 3))),
+        self.assertTrue(np.allclose(phsp.positions, rng.standard_normal(
+            (N, 3))),
                         msg="positions differs from expected value. "
                         f"RNG seed: {self._seed}.")
 
-        self.assertTrue(
-            np.allclose(velocities, rng.standard_normal((N, 3))),
-            msg="gravitational energy differs from expected value. "
-            f"RNG seed: {self._seed}.")
+        self.assertTrue(np.allclose(phsp.velocities, rng.standard_normal(
+            (N, 3))),
+                        msg="velocities differs from expected value. "
+                        f"RNG seed: {self._seed}.")

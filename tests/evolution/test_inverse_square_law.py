@@ -10,6 +10,7 @@ import unittest
 import numpy as np
 
 from nbpy.evolution import InverseSquareLaw
+from nbpy.phasespace import PhaseSpace
 
 
 class TestInverseSquareLaw(unittest.TestCase):
@@ -51,25 +52,26 @@ class TestInverseSquareLaw(unittest.TestCase):
         """
         dim = 3
         n_body = np.random.randint(2, 10)
-        positions = np.random.randn(n_body, dim)
         masses = np.random.rand(n_body)
 
-        accelerations = np.empty_like(positions)
-        self._law.exert(accelerations, masses, positions)
+        phsp = PhaseSpace(n_body)
+        phsp.set_positions(np.random.randn(n_body, dim))
+        self._law.exert(phsp, masses)
 
-        accelerations_expected = np.zeros_like(positions)
+        accelerations_expected = np.zeros_like(phsp.positions)
 
         for j in range(n_body):
             for k, mass in enumerate(masses):
-                d_x = positions[k, 0] - positions[j, 0]
-                d_y = positions[k, 1] - positions[j, 1]
-                d_z = positions[k, 2] - positions[j, 2]
+                d_x = phsp.positions[k, 0] - phsp.positions[j, 0]
+                d_y = phsp.positions[k, 1] - phsp.positions[j, 1]
+                d_z = phsp.positions[k, 2] - phsp.positions[j, 2]
                 d_cube = (d_x**2. + d_y**2. + d_z**2. +
                           self._softening**2.)**1.5
                 accelerations_expected[j, 0] += mass * d_x / d_cube
                 accelerations_expected[j, 1] += mass * d_y / d_cube
                 accelerations_expected[j, 2] += mass * d_z / d_cube
 
-        self.assertTrue(np.allclose(accelerations, accelerations_expected),
+        self.assertTrue(np.allclose(phsp.accelerations,
+                                    accelerations_expected),
                         msg="acceleration differs from expected value. "
                         f"RNG seed: {self._seed}.")

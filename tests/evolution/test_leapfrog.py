@@ -10,6 +10,7 @@ import numpy as np
 
 from nbpy.evolution import InverseSquareLaw
 from nbpy.evolution import Leapfrog
+from nbpy.phasespace import PhaseSpace
 
 
 class TestLeapfrog(unittest.TestCase):
@@ -37,36 +38,38 @@ class TestLeapfrog(unittest.TestCase):
         N = np.random.randint(2, 10)
         masses = np.random.rand(N)
 
-        pos = np.random.randn(N, dim)
-        vel = np.random.randn(N, dim)
-        acc = np.empty_like(pos)
-        self._law.exert(acc, masses, pos)
+        phsp = PhaseSpace(N)
+        phsp.set_positions(np.random.randn(N, dim))
+        phsp.set_velocities(np.random.randn(N, dim))
+        self._law.exert(phsp, masses)
 
-        # Copies to compare with later.
-        pos_ini = pos.copy()
-        vel_ini = vel.copy()
-        acc_ini = acc.copy()
+        # New phase space to compare with later.
+        phsp_expected = PhaseSpace(N)
+        phsp_expected.set_positions(phsp.positions)
+        phsp_expected.set_velocities(phsp.velocities)
+        phsp_expected.set_accelerations(phsp.accelerations)
 
         # Update evolved variables.
         dt = np.random.randn()
-        self._stepper.evolve(pos, vel, acc, dt, masses, self._law)
+        self._stepper.evolve(phsp, dt, masses, self._law)
 
         # Construct expected evolved variables.
-        v_halfstep = vel_ini + 0.5 * dt * acc_ini
-        pos_expected = pos_ini + dt * v_halfstep
+        v_halfstep = phsp_expected.velocities + 0.5 * dt * phsp_expected.accelerations
+        phsp_expected.set_positions(phsp_expected.positions + dt * v_halfstep)
 
-        acc_fin = np.empty_like(pos_expected)
-        self._law.exert(acc_fin, masses, pos_expected)
-        vel_expected = v_halfstep + 0.5 * dt * acc_fin
+        self._law.exert(phsp_expected, masses)
+        phsp_expected.set_velocities(v_halfstep +
+                                     0.5 * dt * phsp_expected.accelerations)
 
-        self.assertTrue(np.allclose(pos, pos_expected),
+        self.assertTrue(np.allclose(phsp.positions, phsp_expected.positions),
                         msg="new position differs from expected value. "
                         f"RNG seed: {self._seed}.")
 
-        self.assertTrue(np.allclose(vel, vel_expected),
+        self.assertTrue(np.allclose(phsp.velocities, phsp_expected.velocities),
                         msg="new velocity differs from expected value. "
                         f"RNG seed: {self._seed}.")
 
-        self.assertTrue(np.allclose(acc, acc_fin),
+        self.assertTrue(np.allclose(phsp.accelerations,
+                                    phsp_expected.accelerations),
                         msg="new acceleration differs from expected value. "
                         f"RNG seed: {self._seed}.")

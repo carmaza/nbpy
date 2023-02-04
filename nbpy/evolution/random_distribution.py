@@ -6,7 +6,8 @@ Defines class `RandomDistribution`.
 """
 
 import numpy as np
-import numpy.typing as npt
+
+from nbpy.phasespace import PhaseSpace
 
 
 class RandomDistribution:
@@ -22,7 +23,7 @@ class RandomDistribution:
     Functions
     ---------
 
-    `set_variables(positions, velocities)`
+    `set_variables(phsp)`
     Assigns positions and velocities to random numbers.
 
     """
@@ -46,19 +47,19 @@ class RandomDistribution:
         """
         return self._seed
 
-    def set_variables(self, positions: npt.NDArray,
-                      velocities: npt.NDArray) -> None:
+    def set_variables(self, phsp: PhaseSpace) -> None:
         """
         Assign `positions` and `velocities` to random numbers.
 
         Parameters
         ----------
 
-        `positions, velocities` : numpy.typing.NDArray, numpy.typing.NDArray [mutate]
-        The N positions and velocities, represented as N-by-3 arrays.
+        `phsp` : nbpy.phasespace.PhaseSpace [mutates]
+        The phase space of the system. Must contain keys "Positions" and
+        "Velocities".
 
         """
-        N = positions.shape[0]
+        N = phsp.positions.shape[0]
         rng = np.random.default_rng(self._seed)
-        positions[:] = rng.standard_normal((N, 3))
-        velocities[:] = rng.standard_normal((N, 3))
+        phsp.set_positions(rng.standard_normal((N, 3)))
+        phsp.set_velocities(rng.standard_normal((N, 3)))

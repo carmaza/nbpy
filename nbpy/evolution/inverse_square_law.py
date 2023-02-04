@@ -8,12 +8,13 @@ Defines class `InverseSquareLaw`.
 import numpy as np
 import numpy.typing as npt
 
+from nbpy.phasespace import PhaseSpace
 from .interaction import Interaction
 
 
 class InverseSquareLaw(Interaction):
     """
-    Newton's classic inverse square law.
+    Newton's classic inverse-square law of gravitation.
 
     Attributes
     ----------
@@ -27,8 +28,8 @@ class InverseSquareLaw(Interaction):
     Functions
     ---------
 
-    `exert(self, accelerations, masses, positions)`
-    Calculates the accelerations from the given parameters.
+    `exert(self, phsp, masses)`
+    Sets the accelerations according to Newton's inverse-square law.
 
     """
 
@@ -63,28 +64,26 @@ class InverseSquareLaw(Interaction):
         """
         return self._softening
 
-    def exert(self, accelerations: npt.NDArray, masses: npt.NDArray,
-              positions: npt.NDArray) -> None:
+    def exert(self, phsp: PhaseSpace, masses: npt.NDArray) -> None:
         """
-        Compute accelerations of all interacting particles.
+        Set accelerations of all interacting particles using Newton's
+        inverse-square law.
 
         Parameters
         ----------
 
-        `accelerations` : numpy.typing.NDArray [mutates]
-        N-by-3 array to store the accelerations of all N particles.
+        `phsp` : nbpy.phasespace.PhaseSpace [mutates]
+        The `PhaseSpace` object of the system. Must contain an `Accelerations`
+        key, which will be set to new values by this function.
 
         `masses` : numpy.typing.NDArray
         N-by-1 array containing the masses of all N particles.
 
-        `positions` : numpy.typing.NDArray
-        N-by-3 array containing the positions of all N particles.
-
         """
         # `x` stores x coordinates of all particles, and similarly for y and z.
-        x = positions[:, 0:1]
-        y = positions[:, 1:2]
-        z = positions[:, 2:3]
+        x = phsp.positions[:, 0:1]
+        y = phsp.positions[:, 1:2]
+        z = phsp.positions[:, 2:3]
 
         # Index convention: d_x[j, k] = x[k] - x[j], and similarly for y and z.
         d_x = x.T - x
@@ -94,6 +93,6 @@ class InverseSquareLaw(Interaction):
         inv_d_cube = (d_x**2. + d_y**2. + d_z**2. +
                       self._softening**2.)**(-1.5)
 
-        accelerations[:, 0] = np.matmul(d_x * inv_d_cube, masses)
-        accelerations[:, 1] = np.matmul(d_y * inv_d_cube, masses)
-        accelerations[:, 2] = np.matmul(d_z * inv_d_cube, masses)
+        phsp.accelerations[:, 0] = np.matmul(d_x * inv_d_cube, masses)
+        phsp.accelerations[:, 1] = np.matmul(d_y * inv_d_cube, masses)
+        phsp.accelerations[:, 2] = np.matmul(d_z * inv_d_cube, masses)

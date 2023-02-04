@@ -9,8 +9,7 @@ Defines the function that runs the simulation:
 
 import numpy as np
 
-from nbpy import evolution
-from nbpy import io
+from nbpy import evolution, io, phasespace
 
 
 def run(inputfile: str) -> None:
@@ -45,28 +44,26 @@ def run(inputfile: str) -> None:
     softening = 1.e-2
     interaction = evolution.InverseSquareLaw(constant, softening)
 
-    # These variables will hold phase space for each timestep.
-    positions = np.empty((N, 3))
-    velocities = np.empty((N, 3))
-    accelerations = np.empty((N, 3))
+    # Holds phase space variables: positions, velocities, accelerations.
+    phsp = phasespace.PhaseSpace(N)
 
     print("Loading initial data...")
     time = evolution.Time(0, 0.)
     initial_state = evolution.RandomDistribution()
-    initial_state.set_variables(positions, velocities)
+    initial_state.set_variables(phsp)
     print("Initial data loaded.")
 
     if observing:
-        filepath = io.write_snapshot_to_disk(filename, group, positions, time)
+        filepath = io.write_snapshot_to_disk(filename, group, phsp.positions,
+                                             time)
         print(f"Writing data to {filepath}")
 
     print("Running evolution...")
-    interaction.exert(accelerations, masses, positions)
+    interaction.exert(phsp, masses)
     for time_id in range(1, timesteps):
-        integrator.evolve(positions, velocities, accelerations, dt, masses,
-                          interaction)
+        integrator.evolve(phsp, dt, masses, interaction)
         if observing:
             time = evolution.Time(time_id, dt * time_id)
-            filepath = io.write_snapshot_to_disk(filename, group, positions,
-                                                 time)
+            filepath = io.write_snapshot_to_disk(filename, group,
+                                                 phsp.positions, time)
     print("Done!")

@@ -7,6 +7,8 @@ Defines class `Leapfrog`.
 
 import numpy.typing as npt
 
+from nbpy.phasespace import PhaseSpace
+
 
 class Leapfrog:
     """
@@ -15,14 +17,14 @@ class Leapfrog:
     Functions
     ---------
 
-    `evolve(pos, vel, acc, dt, masses, interaction)`
-    The algorithm to update the positions and velocities.
+    `evolve(phsp, dt, masses, interaction)`
+    The algorithm to update the phase space.
 
     """
 
     @staticmethod
-    def evolve(pos: npt.NDArray, vel: npt.NDArray, acc: npt.NDArray, dt: float,
-               masses: npt.NDArray, interaction) -> None:
+    def evolve(phsp: PhaseSpace, dt: float, masses: npt.NDArray,
+               interaction) -> None:
         """
         Update positions and velocities.
 
@@ -32,9 +34,9 @@ class Leapfrog:
         Parameters
         ----------
 
-        `pos, vel, acc` : numpy.typing.NDArray, numpy.typing.NDArray, numpy.typing.NDArray [mutate]
-        The positions, velocities, and accelerations of the system. They must
-        have the same array shape among each other.
+        `phsp` : nbpy.phasespace.PhaseSpace [mutates]
+        The phase space of the system. Must contain keys "Positions",
+        "Velocities", and "Accelerations".
 
         `dt` : float
         The (fixed) time step. Must be lower than twice the characteristic
@@ -48,7 +50,7 @@ class Leapfrog:
         position. Must have an `exert(acc, masses, pos)` member function.
 
         """
-        vel += 0.5 * dt * acc
-        pos += dt * vel
-        interaction.exert(acc, masses, pos)
-        vel += 0.5 * dt * acc
+        phsp.set_velocities(phsp.velocities + 0.5 * dt * phsp.accelerations)
+        phsp.set_positions(phsp.positions + dt * phsp.velocities)
+        interaction.exert(phsp, masses)
+        phsp.set_velocities(phsp.velocities + 0.5 * dt * phsp.accelerations)
