@@ -36,8 +36,8 @@ class TestWriteSnapshotToDisk(unittest.TestCase):
         id_ = np.random.randint(1, 10)
         time = Time(id_, np.random.randn())
         groupname = "Temp"
-        filepath = io.write_snapshot_to_disk("temp", groupname, data_to_write,
-                                             time)
+        opts = {"Groupname": groupname, "Filename": "temp"}
+        filepath = io.write_snapshot_to_disk(opts, data_to_write, time)
 
         with h5py.File(filepath, "r") as readfile:
             dataset_written = readfile[groupname][f"{id_:06}"]

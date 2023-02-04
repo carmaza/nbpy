@@ -36,8 +36,6 @@ def run(inputfile: str) -> None:
 
     observer_opts = options["Observers"]
     observing = observer_opts["Observing"]
-    group = observer_opts["Groupname"]
-    filename = observer_opts["Filename"]
 
     # Interaction's properties.
     constant = 4. * np.pi**2.
@@ -57,7 +55,7 @@ def run(inputfile: str) -> None:
     interaction.exert(phsp, masses)
 
     if observing:
-        filepath = io.write_snapshot_to_disk(filename, group, phsp.positions,
+        filepath = io.write_snapshot_to_disk(observer_opts, phsp.positions,
                                              time)
         print(f"Writing data to {filepath}")
 
@@ -66,6 +64,6 @@ def run(inputfile: str) -> None:
         integrator.evolve(phsp, dt, masses, interaction)
         if observing:
             time = evolution.Time(time_id, dt * time_id)
-            io.write_snapshot_to_disk(filename, group, phsp.positions, time)
+            io.write_snapshot_to_disk(observer_opts, phsp.positions, time)
 
     print("Done!")
