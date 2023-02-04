@@ -49,14 +49,14 @@ class RandomDistribution:
 
     def set_variables(self, phsp: PhaseSpace) -> None:
         """
-        Assign `positions` and `velocities` to random numbers.
+        Assign positions and velocities to random numbers.
 
         Parameters
         ----------
 
         `phsp` : nbpy.phasespace.PhaseSpace [mutates]
-        The phase space of the system. Must contain keys "Positions" and
-        "Velocities".
+        The phase space of the system. Must contain items of keys "Positions"
+        and "Velocities", whose values will be set by this function.
 
         """
         N = phsp.positions.shape[0]
