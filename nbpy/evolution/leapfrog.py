@@ -47,7 +47,7 @@ class Leapfrog:
 
         `interaction` : obj
         The interaction from which to calculate the acceleration in terms of the
-        position. Must have an `exert(acc, masses, pos)` member function.
+        position. Must have an `exert(phsp, masses)` member function.
 
         """
         phsp.set_velocities(phsp.velocities + 0.5 * dt * phsp.accelerations)
