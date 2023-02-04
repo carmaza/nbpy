@@ -53,16 +53,19 @@ def run(inputfile: str) -> None:
     initial_state.set_variables(phsp)
     print("Initial data loaded.")
 
+    # With the initial conditions set, calculate initial accelerations.
+    interaction.exert(phsp, masses)
+
     if observing:
         filepath = io.write_snapshot_to_disk(filename, group, phsp.positions,
                                              time)
         print(f"Writing data to {filepath}")
 
     print("Running evolution...")
-    interaction.exert(phsp, masses)
     for time_id in range(1, timesteps):
         integrator.evolve(phsp, dt, masses, interaction)
         if observing:
             time = evolution.Time(time_id, dt * time_id)
             io.write_snapshot_to_disk(filename, group, phsp.positions, time)
+
     print("Done!")
