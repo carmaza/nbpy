@@ -73,8 +73,8 @@ class InverseSquareLaw(Interaction):
         ----------
 
         `phsp` : nbpy.phasespace.PhaseSpace [mutates]
-        The `PhaseSpace` object of the system. Must contain an `Accelerations`
-        key, which will be set to new values by this function.
+        The `PhaseSpace` object of the system. Must contain an item of key
+        `Accelerations`, whose value will be set to new values by this function.
 
         `masses` : numpy.typing.NDArray
         N-by-1 array containing the masses of all N particles.
