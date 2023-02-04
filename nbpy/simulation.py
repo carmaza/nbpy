@@ -64,6 +64,5 @@ def run(inputfile: str) -> None:
         integrator.evolve(phsp, dt, masses, interaction)
         if observing:
             time = evolution.Time(time_id, dt * time_id)
-            filepath = io.write_snapshot_to_disk(filename, group,
-                                                 phsp.positions, time)
+            io.write_snapshot_to_disk(filename, group, phsp.positions, time)
     print("Done!")
