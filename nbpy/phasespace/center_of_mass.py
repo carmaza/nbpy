@@ -22,7 +22,8 @@ def center_of_mass(phsp: PhaseSpace, masses: npt.NDArray) -> npt.NDArray:
     ----------
 
     `phsp` : nbpy.phasespace.PhaseSpace
-    A `PhaseSpace` object containing the positions of the system.
+    A `PhaseSpace` object containing the positions of the system. Must contain
+    an item of key "Positions".
 
     `masses` : numpy.typing.NDArray
     The masses, stored as an N-dimensional array.
