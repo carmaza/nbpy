@@ -1,7 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Contains unit tests for class `evolution.InverseSquareLaw`.
+Contains unit tests for class `interactions.InverseSquareLaw`.
 
 """
 
@@ -9,13 +9,13 @@ import unittest
 
 import numpy as np
 
-from nbpy.evolution import InverseSquareLaw
+from nbpy.interactions import InverseSquareLaw
 from nbpy.phasespace import PhaseSpace
 
 
 class TestInverseSquareLaw(unittest.TestCase):
     """
-    Test class `evolution.InverseSquareLaw`.
+    Test class `interactions.InverseSquareLaw`.
 
     """
 
