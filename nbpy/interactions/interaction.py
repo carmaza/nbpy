@@ -19,7 +19,7 @@ class Interaction(metaclass=abc.ABCMeta):
 
     @classmethod
     @abc.abstractmethod
-    def name(cls):
+    def name(cls) -> str:
         """
         The name of the interaction.
 
