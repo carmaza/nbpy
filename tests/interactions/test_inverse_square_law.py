@@ -50,6 +50,31 @@ class TestInverseSquareLaw(unittest.TestCase):
             msg="value of softening differs from expected value. "
             f"RNG seed: {self._seed}.")
 
+    def test_construct_from_dict(self):
+        """
+        Test construction from dictionary.
+
+        """
+        params = {"Constant": self._constant, "Softening": self._softening}
+        law_from_dict = InverseSquareLaw.from_dict(params)
+
+        self.assertEqual(law_from_dict.name(),
+                         self._law.name(),
+                         msg="value of name differs from expected value. "
+                         f"RNG seed: {self._seed}.")
+
+        self.assertAlmostEqual(
+            law_from_dict.constant,
+            self._law.constant,
+            msg="value of constant differs from expected value. "
+            f"RNG seed: {self._seed}.")
+
+        self.assertAlmostEqual(
+            law_from_dict.softening,
+            self._law.softening,
+            msg="value of softening differs from expected value. "
+            f"RNG seed: {self._seed}.")
+
     def test_exert(self):
         """
         Test implementation of member function `exert`.

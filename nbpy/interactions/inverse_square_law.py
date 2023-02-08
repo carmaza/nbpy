@@ -51,6 +51,41 @@ class InverseSquareLaw(Interaction):
         self._constant = constant
         self._softening = softening
 
+    @classmethod
+    def name(cls) -> str:
+        """
+        The name of the class.
+
+        """
+        return "InverseSquareLaw"
+
+    @classmethod
+    def from_dict(cls, params: dict):
+        """
+        Construct an instance from a dictionary of parameters.
+
+        Parameters
+        ----------
+
+        `params` : dict
+        The dictionary. Must contain keys 'Constant' (float), 'Softening' (float).
+
+        Returns
+        -------
+
+        out : obj
+        The constructed object.
+
+        """
+        try:
+            return cls(params["Constant"], params["Softening"])
+        except KeyError:
+            print(f"""KeyError in {cls.name()}:\n:
+            Keys expected: ['Constant', 'Softening'].
+            Keys passed:   {list(params.keys())}
+            """)
+            raise
+
     @property
     def constant(self) -> float:
         """
@@ -66,14 +101,6 @@ class InverseSquareLaw(Interaction):
 
         """
         return self._softening
-
-    @classmethod
-    def name(cls) -> str:
-        """
-        The name of the class.
-
-        """
-        return "InverseSquareLaw"
 
     def exert(self, phsp: PhaseSpace, masses: npt.NDArray) -> None:
         """
