@@ -75,6 +75,15 @@ class TestInverseSquareLaw(unittest.TestCase):
             msg="value of softening differs from expected value. "
             f"RNG seed: {self._seed}.")
 
+    @unittest.expectedFailure
+    def test_construct_from_dict(self):
+        """
+        Test failed construction from dictionary.
+
+        """
+        params = {"WrongKey": self._constant, "Softening": self._softening}
+        law_from_dict = InverseSquareLaw.from_dict(params)
+
     def test_exert(self):
         """
         Test implementation of member function `exert`.

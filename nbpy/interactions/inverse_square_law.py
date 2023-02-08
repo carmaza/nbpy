@@ -85,6 +85,9 @@ class InverseSquareLaw(Interaction):
             Keys passed:   {list(params.keys())}
             """)
             raise
+        except:
+            print("Unknown error when initializing {cls.name()} from dict.")
+            raise
 
     @property
     def constant(self) -> float:
