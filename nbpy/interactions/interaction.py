@@ -19,6 +19,14 @@ class Interaction(metaclass=abc.ABCMeta):
 
     @classmethod
     @abc.abstractmethod
+    def from_dict(cls, params: dict):
+        """
+        Constructor that uses a dictionary of parameters.
+
+        """
+
+    @classmethod
+    @abc.abstractmethod
     def name(cls) -> str:
         """
         The name of the interaction.
