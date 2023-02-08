@@ -33,6 +33,11 @@ class TestInverseSquareLaw(unittest.TestCase):
         Test interface for class attributes.
 
         """
+        self.assertEqual("InverseSquareLaw",
+                         self._law.name(),
+                         msg="value of name differs from expected value. "
+                         f"RNG seed: {self._seed}.")
+
         self.assertAlmostEqual(
             self._constant,
             self._law.constant,

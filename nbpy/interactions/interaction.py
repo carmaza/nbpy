@@ -17,8 +17,17 @@ class Interaction(metaclass=abc.ABCMeta):
 
     """
 
+    @classmethod
+    @abc.abstractmethod
+    def name(cls):
+        """
+        The name of the interaction.
+
+        """
+
     @abc.abstractmethod
     def exert(self, phsp: PhaseSpace, masses: npt.NDArray) -> None:
         """
         Set the accelerations in terms of the phase space.
+
         """

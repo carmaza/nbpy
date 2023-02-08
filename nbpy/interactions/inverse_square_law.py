@@ -31,6 +31,9 @@ class InverseSquareLaw(Interaction):
     `exert(self, phsp, masses)`
     Sets the accelerations according to Newton's inverse-square law.
 
+    `name` : str
+    The name of the class: "InverseSquareLaw"
+
     """
 
     def __init__(self, constant: float, softening: float):
@@ -63,6 +66,14 @@ class InverseSquareLaw(Interaction):
 
         """
         return self._softening
+
+    @classmethod
+    def name(cls) -> str:
+        """
+        The name of the class.
+
+        """
+        return "InverseSquareLaw"
 
     def exert(self, phsp: PhaseSpace, masses: npt.NDArray) -> None:
         """
