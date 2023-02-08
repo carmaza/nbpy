@@ -57,7 +57,7 @@ class InverseSquareLaw(Interaction):
         The name of the class.
 
         """
-        return "InverseSquareLaw"
+        return cls.__name__
 
     @classmethod
     def from_dict(cls, params: dict):
