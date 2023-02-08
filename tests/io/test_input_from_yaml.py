@@ -26,6 +26,12 @@ class TestInputFromYaml(unittest.TestCase):
 
         expected = {}
         expected["Particles"] = {"N": 50}
+        expected["Interaction"] = {
+            "InverseSquareLaw": {
+                "Constant": 39.47841760435743,
+                "Softening": 0.01
+            }
+        }
         expected["Evolution"] = {"InitialDt": 1.e-3, "Timesteps": 10}
         expected["Observers"] = {
             "Observing": True,

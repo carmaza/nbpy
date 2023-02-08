@@ -23,6 +23,12 @@ def input_from_yaml(inputfile: str) -> dict:
     Particles:
       N: <int>
 
+    Interaction:
+      <name>:
+        <parameter>: ...
+        <parameter>: ...
+        ...
+
     Evolution:
       InitialDt: <float>
       Timesteps: <int>
@@ -33,6 +39,8 @@ def input_from_yaml(inputfile: str) -> dict:
       Groupname: <str>
 
     ```
+
+    See `interactions.Interactions` for all available interactions.
 
     Parameters
     ----------
