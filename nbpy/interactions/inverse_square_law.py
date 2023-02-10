@@ -4,7 +4,6 @@
 Defines class `InverseSquareLaw`.
 
 """
-
 import numpy as np
 import numpy.typing as npt
 
@@ -60,7 +59,7 @@ class InverseSquareLaw(Interaction):
         return cls.__name__
 
     @classmethod
-    def from_dict(cls, params: dict):
+    def from_dict(cls, params: dict) -> 'InverseSquareLaw':
         """
         Construct an instance from a dictionary of parameters.
 
