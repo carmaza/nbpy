@@ -76,7 +76,7 @@ class TestInverseSquareLaw(unittest.TestCase):
             f"RNG seed: {self._seed}.")
 
     @unittest.expectedFailure
-    def test_construct_from_dict(self):
+    def test_construct_from_dict_failure(self):
         """
         Test failed construction from dictionary.
 
