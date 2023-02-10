@@ -82,7 +82,7 @@ class TestInverseSquareLaw(unittest.TestCase):
 
         """
         params = {"WrongKey": self._constant, "Softening": self._softening}
-        law_from_dict = InverseSquareLaw.from_dict(params)
+        InverseSquareLaw.from_dict(params)
 
     def test_exert(self):
         """
