@@ -1,7 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Contains unit tests for `phasespace.center_of_mass`.
+Contains unit tests for `particles.center_of_mass`.
 
 """
 
@@ -9,12 +9,12 @@ import unittest
 
 import numpy as np
 
-from nbpy import phasespace
+from nbpy import particles
 
 
 class TestCenterOfMass(unittest.TestCase):
     """
-    Test `phasespace.center_of_mass`.
+    Test `particles.center_of_mass`.
 
     """
 
@@ -31,11 +31,11 @@ class TestCenterOfMass(unittest.TestCase):
         N = np.random.randint(2, 10)
         masses = np.random.rand(N)
 
-        phsp = phasespace.PhaseSpace(N)
+        phsp = particles.PhaseSpace(N)
         phsp.set_positions(np.random.randn(N, dim))
 
         total_mass = sum(masses)
-        center_of_mass = phasespace.center_of_mass(phsp, masses)
+        center_of_mass = particles.center_of_mass(phsp, masses)
 
         center_of_mass_expected = np.zeros(3)
         for k, mass_k in enumerate(masses):

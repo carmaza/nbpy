@@ -10,7 +10,7 @@ import numpy as np
 
 from nbpy.evolution import Leapfrog
 from nbpy.interactions import InverseSquareLaw
-from nbpy.phasespace import PhaseSpace
+from nbpy.particles import PhaseSpace
 
 
 class TestLeapfrog(unittest.TestCase):

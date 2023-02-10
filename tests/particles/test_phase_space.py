@@ -1,7 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Contains unit tests for class `phasespace.PhaseSpace`.
+Contains unit tests for class `particles.PhaseSpace`.
 
 """
 
@@ -9,12 +9,12 @@ import unittest
 
 import numpy as np
 
-from nbpy.phasespace import PhaseSpace
+from nbpy.particles import PhaseSpace
 
 
 class TestPhaseSpace(unittest.TestCase):
     """
-    Test class `phasespace.PhaseSpace`.
+    Test class `particles.PhaseSpace`.
 
     """
 

@@ -1,7 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Defines class `phasespace.PhaseSpace`.
+Defines class `particles.PhaseSpace`.
 
 """
 

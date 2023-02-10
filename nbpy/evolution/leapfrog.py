@@ -7,7 +7,7 @@ Defines class `Leapfrog`.
 
 import numpy.typing as npt
 
-from nbpy.phasespace import PhaseSpace
+from nbpy.particles import PhaseSpace
 
 
 class Leapfrog:
@@ -34,7 +34,7 @@ class Leapfrog:
         Parameters
         ----------
 
-        `phsp` : nbpy.phasespace.PhaseSpace [mutates]
+        `phsp` : nbpy.particles.Particles [mutates]
         The phase space of the system. Must contain keys "Positions",
         "Velocities", and "Accelerations".
 

@@ -10,7 +10,7 @@ import unittest
 import numpy as np
 
 from nbpy.evolution import RandomDistribution
-from nbpy.phasespace import PhaseSpace
+from nbpy.particles import PhaseSpace
 
 
 class TestRandomDistribution(unittest.TestCase):

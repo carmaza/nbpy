@@ -7,7 +7,7 @@ Defines class `InverseSquareLaw`.
 import numpy as np
 import numpy.typing as npt
 
-from nbpy.phasespace import PhaseSpace
+from nbpy.particles import PhaseSpace
 from .interaction import Interaction
 
 
@@ -112,7 +112,7 @@ class InverseSquareLaw(Interaction):
         Parameters
         ----------
 
-        `phsp` : nbpy.phasespace.PhaseSpace [mutates]
+        `phsp` : nbpy.particles.PhaseSpace [mutates]
         The `PhaseSpace` object of the system. Must contain an item of key
         `Accelerations`, whose value will be set to new values by this function.
 

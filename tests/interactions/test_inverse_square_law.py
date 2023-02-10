@@ -10,7 +10,7 @@ import unittest
 import numpy as np
 
 from nbpy.interactions import InverseSquareLaw
-from nbpy.phasespace import PhaseSpace
+from nbpy.particles import PhaseSpace
 
 
 class TestInverseSquareLaw(unittest.TestCase):

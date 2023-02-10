@@ -9,7 +9,7 @@ Defines the function that runs the simulation:
 
 import numpy as np
 
-from nbpy import evolution, interactions, io, phasespace
+from nbpy import evolution, interactions, io, particles
 
 
 def run(inputfile: str) -> None:
@@ -43,7 +43,7 @@ def run(inputfile: str) -> None:
     interaction = interactions.InverseSquareLaw(constant, softening)
 
     # Holds phase space variables: positions, velocities, accelerations.
-    phsp = phasespace.PhaseSpace(N)
+    phsp = particles.PhaseSpace(N)
 
     print("Loading initial data...")
     time = evolution.Time(0, 0.)

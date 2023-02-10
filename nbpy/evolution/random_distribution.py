@@ -7,7 +7,7 @@ Defines class `RandomDistribution`.
 
 import numpy as np
 
-from nbpy.phasespace import PhaseSpace
+from nbpy.particles import PhaseSpace
 
 
 class RandomDistribution:
@@ -54,7 +54,7 @@ class RandomDistribution:
         Parameters
         ----------
 
-        `phsp` : nbpy.phasespace.PhaseSpace [mutates]
+        `phsp` : nbpy.particles.PhaseSpace [mutates]
         The phase space of the system. Must contain items of keys "Positions"
         and "Velocities", whose values will be set by this function.
 

@@ -1,7 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Defines classes and functions of the phase space.
+Defines classes and functions related to the particles.
 
 """
 

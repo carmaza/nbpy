@@ -8,7 +8,7 @@ import abc
 
 import numpy.typing as npt
 
-from nbpy.phasespace import PhaseSpace
+from nbpy.particles import PhaseSpace
 
 
 class Interaction(metaclass=abc.ABCMeta):
