@@ -60,7 +60,7 @@ def run(inputfile: str) -> None:
         print(f"Writing data to {filepath}")
 
     print("Running evolution...")
-    for time_id in range(1, timesteps):
+    for time_id in range(1, timesteps + 1):
         integrator.evolve(phsp, dt, masses, interaction)
         if observing:
             time = evolution.Time(time_id, dt * time_id)
