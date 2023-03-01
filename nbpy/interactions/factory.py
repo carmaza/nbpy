@@ -1,7 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Defines a class containing all available `Interaction` subtypes.
+Defines class :class:`.Interactions`.
 
 """
 
@@ -13,7 +13,8 @@ from .inverse_square_law import InverseSquareLaw
 
 class Interactions:
     """
-    A class to obtain all available subtypes of `Interaction`.
+    A class to obtain all available types derived from
+    :class:`.Interaction` s.
 
     """
 
