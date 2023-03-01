@@ -1,7 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Defines class `InverseSquareLaw`.
+Defines class :class:`.InverseSquareLaw`.
 
 """
 import numpy as np
@@ -15,38 +15,18 @@ class InverseSquareLaw(Interaction):
     """
     Newton's classic inverse-square law of gravitation.
 
-    Attributes
+    Parameters
     ----------
 
-    `constant` : float
-    The gravitational constant.
+    constant : float
+        The gravitational constant.
 
-    `softening` : float
-    The softening parameter.
-
-    Functions
-    ---------
-
-    `exert(self, phsp, masses)`
-    Sets the accelerations according to Newton's inverse-square law.
-
-    `name` : str
-    The name of the class: "InverseSquareLaw"
+    softening : float
+        The softening parameter.
 
     """
 
     def __init__(self, constant: float, softening: float):
-        """
-        Parameters
-        ----------
-
-        `constant` : float
-        The gravitational constant.
-
-        `softening` : float
-        the softening parameter.
-
-        """
         self._constant = constant
         self._softening = softening
 
@@ -66,14 +46,15 @@ class InverseSquareLaw(Interaction):
         Parameters
         ----------
 
-        `params` : dict
-        The dictionary. Must contain keys 'Constant' (float), 'Softening' (float).
+        params : dict
+            The dictionary. Must contain keys ``"Constant"`` (float),
+            and ``"Softening"`` (float).
 
         Returns
         -------
 
         out : obj
-        The constructed object.
+            The constructed object.
 
         """
         try:
@@ -99,7 +80,7 @@ class InverseSquareLaw(Interaction):
     @property
     def softening(self) -> float:
         """
-        The softening parameter for close encounters.
+        The softening parameter.
 
         """
         return self._softening
@@ -112,12 +93,13 @@ class InverseSquareLaw(Interaction):
         Parameters
         ----------
 
-        `phsp` : nbpy.particles.PhaseSpace [mutates]
-        The `PhaseSpace` object of the system. Must contain an item of key
-        `Accelerations`, whose value will be set to new values by this function.
+        phsp : :class:`.PhaseSpace`
+            The object representing the system's phase space. Must contain a key
+            ``"Accelerations"``, whose value will be set to new values by this
+            function.
 
-        `masses` : numpy.typing.NDArray
-        N-by-1 array containing the masses of all N particles.
+        masses : numpy.typing.NDArray
+            N-by-1 array containing the masses of all N particles.
 
         """
         # `x` stores x coordinates of all particles, and similarly for y and z.
