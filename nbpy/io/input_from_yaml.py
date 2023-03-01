@@ -1,10 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Defines the following function:
-
-- `input_from_yaml(inputfile)`
-  Reads input file and returns dict containing simulation options.
+Defines the function :func:`.input_from_yaml`.
 
 """
 
@@ -17,42 +14,42 @@ def input_from_yaml(inputfile: str) -> dict:
     """
     Return dictionary of simulations options specified in YAML input file.
 
-    The options specified in the input file are:
+    The options specified in the input file follow the template
 
-    ```
-    Particles:
-      N: <int>
+    .. code-block::
 
-    Interaction:
-      <name>:
-        <parameter>: ...
-        <parameter>: ...
-        ...
+        Particles:
+          N: (int)
 
-    Evolution:
-      InitialDt: <float>
-      Timesteps: <int>
+        Interaction:
+          <name>:
+            <parameter>: ...
+            <parameter>: ...
+            ...
 
-    Observers:
-      Observing: <bool>
-      Filename: <str>
-      Groupname: <str>
+        Evolution:
+          InitialDt: (float)
+          Timesteps: (int)
 
-    ```
+        Observers:
+          Observing: (bool)
+          Filename: (str)
+          Groupname: (str)
 
-    See `interactions.Interactions` for all available interactions.
+    An example can be found  ``/tests/io/Example.yml``. See
+    ``/interactions`` for all available interactions. 
 
     Parameters
     ----------
 
-    `inputfile` : str
-    The name of the target input file, without the YAML extension.
+    inputfile : str
+        The name of the target input file, without the YAML extension.
 
     Returns
     -------
 
-    out : `dict`
-    A dictionary of the options for the simulation.
+    out : dict
+        A dictionary of the options for the simulation.
 
     """
     try:
