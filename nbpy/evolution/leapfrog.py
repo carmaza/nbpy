@@ -1,7 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Defines class `Leapfrog`.
+Defines class :class:`.Leapfrog`.
 
 """
 
@@ -13,12 +13,6 @@ from nbpy.particles import PhaseSpace
 class Leapfrog:
     """
     The syncronized second-order Leapfrog integrator for oscillatory problems.
-
-    Functions
-    ---------
-
-    `evolve(phsp, dt, masses, interaction)`
-    The algorithm to update the phase space.
 
     """
 
@@ -34,20 +28,20 @@ class Leapfrog:
         Parameters
         ----------
 
-        `phsp` : nbpy.particles.Particles [mutates]
-        The phase space of the system. Must contain keys "Positions",
-        "Velocities", and "Accelerations".
+        phsp : :class:`.PhaseSpace`
+            The phase space of the system. Must contain keys ``"Positions"``,
+            ``"Velocities"``, and ``"Accelerations"``.
 
-        `dt` : float
-        The (fixed) time step. Must be lower than twice the characteristic
-        oscillation period.
+        dt : float
+            The (fixed) time step. Must be lower than twice the characteristic
+            oscillation period.
 
-        `masses` : numpy.typing.NDArray
-        The masses of the particles.
+        masses : numpy.typing.NDArray
+            The masses of the particles.
 
-        `interaction` : obj
-        The interaction from which to calculate the acceleration in terms of the
-        position. Must have an `exert(phsp, masses)` member function.
+        interaction : obj
+            The interaction from which to calculate the acceleration in terms of
+            the position. Must have an ``exert(phsp, masses)`` member function.
 
         """
         phsp.set_velocities(phsp.velocities + 0.5 * dt * phsp.accelerations)
