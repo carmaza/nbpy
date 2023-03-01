@@ -1,7 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Defines class `RandomDistribution`.
+Defines class :class:`.RandomDistribution`.
 
 """
 
@@ -14,29 +14,15 @@ class RandomDistribution:
     """
     Sets positions and velocities to random values normally distributed.
 
-    Attributes
+    Parameters
     ----------
 
     seed : int (default: 25092020)
-    The RNG seed.
-
-    Functions
-    ---------
-
-    `set_variables(phsp)`
-    Assigns positions and velocities to random numbers.
+        The RNG seed.
 
     """
 
     def __init__(self, seed: int = 25092020):
-        """
-        Parameters
-        ----------
-
-        `seed` : int (default: 25092020)
-        The RNG seed.
-
-        """
         self._seed = seed
 
     @property
@@ -54,9 +40,10 @@ class RandomDistribution:
         Parameters
         ----------
 
-        `phsp` : nbpy.particles.PhaseSpace [mutates]
-        The phase space of the system. Must contain items of keys "Positions"
-        and "Velocities", whose values will be set by this function.
+        phsp : :class:`.PhaseSpace`
+            The phase space of the system. Must contain items of keys
+            ``"Positions"`` and ``"Velocities"``, whose values will be set by
+            this function.
 
         """
         N = phsp.positions.shape[0]
