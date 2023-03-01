@@ -1,13 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Defines the following functions to plot simulation data:
-
-- `orbits_3d(filepath, groupname, figure_folder="figures")`
-  Plots time evolution of the orbits of the particles.
-
-- `positions_3d(axis, time, positions, folder, grid_off=True)`
-  Plots particles at their 3-d positions at a specific time.
+Defines functions to plot simulation data.
 
 """
 
@@ -33,23 +27,23 @@ def positions_3d(axis,
     Parameters
     ----------
 
-    `axis` : obj
-    The Matplotlib object containing the plot axis.
+    axis : obj
+        The Matplotlib object containing the plot axis.
 
-    `time` : nbpy.Time
-    The Time object representing the time of observation.
+    time : :class:`.Time`
+        The object representing the time of observation.
 
-    `positions` : numpy.typing.NDArray
-    The positions at the given time, stored as a N-by-3 NumPy array.
+    positions : numpy.typing.NDArray
+        The positions at the given time, stored as a N-by-3 NumPy array.
 
-    `folder` : string
-    The local folder where to store the plot.
+    folder : string
+        The local folder where to store the plot.
 
-    `center_of_mass` : numpy.typing.NDArray (default: None)
-    If given, then plot it along with the system.
+    center_of_mass : numpy.typing.NDArray (default: None)
+        If given, then plot it along with the system.
 
-    `grid_off` : bool (default: True)
-    Whether to turn off plot grid.
+    grid_off : bool (default: True)
+        Whether to turn off plot grid.
 
     """
 
@@ -106,14 +100,14 @@ def orbits_3d(filepath: str,
     Parameters
     ----------
 
-    `filepath` : str
-    The path to the file containing the data.
+    filepath : str
+        The path to the file containing the data.
 
-    `groupname` : str
-    The HDF5 group name in the file.
+    groupname : str
+        The HDF5 group name in the file.
 
-    `figure_folder` : str (default: "./figures")
-    The local folder where to store the figures.
+    figure_folder : str (default: "./figures")
+        The local folder where to store the figures.
 
     """
     fig = plt.figure()
