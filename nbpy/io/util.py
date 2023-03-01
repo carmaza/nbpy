@@ -1,10 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Defines the following utility functions:
-
-- `create_folder(folder)`
-  Creates a folder and throws exception if it can't.
+Defines utility functions.
 
 """
 
@@ -19,8 +16,8 @@ def create_folder(path: str) -> None:
     Parameters
     ----------
 
-    `path` : str
-    The path to the new folder, including its name.
+    path : str
+        The path to the new folder, including its name.
 
     """
     try:
