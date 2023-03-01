@@ -1,7 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for detais.
 """
-Defines class `Time`.
+Defines class :class:`.Time`.
 
 """
 
@@ -10,14 +10,14 @@ class Time:
     """
     A time instant.
 
-    Attributes
+    Parameters
     ----------
 
-    `id_` : int
-    A unique ID.
+    id_ : int
+        A unique ID.
 
-    `value` : float
-    The numerical value of the time instant.
+    value : float
+        The numerical value of the time instant.
 
     """
 
@@ -26,11 +26,11 @@ class Time:
         Parameters
         ----------
 
-        `id_` : int
-        The unique ID.
+        id_ : int
+            The unique ID.
 
-        `value` : float
-        The time value.
+        value : float
+            The time value.
 
         """
         self._id = id_
