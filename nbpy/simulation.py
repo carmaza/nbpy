@@ -1,9 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Defines the function that runs the simulation:
-
-- `run(inputfile)`
+Defines the function that runs the simulation.
 
 """
 
@@ -19,8 +17,8 @@ def run(inputfile: str) -> None:
     Parameters
     ----------
 
-    `inputfile` : str
-    The name of the YAML input file, without any extension.
+    inputfile : str
+        The name of the YAML input file, without any extension.
 
     """
     options = io.input_from_yaml(inputfile)
