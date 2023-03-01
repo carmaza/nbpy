@@ -1,7 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Defines abstract class `Interaction`.
+Defines class :class:`.Interaction`.
 
 """
 import abc
