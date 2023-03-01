@@ -1,10 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Defines the following function of the phase space:
-
-- `center_of_mass(phsp, masses)`
-  Computes the center of mass of the system.
+Defines functions of the phase space of the system.
 
 """
 
@@ -21,18 +18,17 @@ def center_of_mass(phsp: PhaseSpace, masses: npt.NDArray) -> npt.NDArray:
     Parameters
     ----------
 
-    `phsp` : nbpy.particles.PhaseSpace
-    A `PhaseSpace` object containing the positions of the system. Must contain
-    an item of key "Positions".
+    phsp : :class:`.PhaseSpace`
+        An object containing the positions of the system.
 
-    `masses` : numpy.typing.NDArray
-    The masses, stored as an N-dimensional array.
+    masses : numpy.typing.NDArray
+        The masses, stored as an N-dimensional array.
 
     Returns
     -------
 
     out : numpy.typing.NDArray
-    The center of mass.
+        The center of mass.
 
     """
     return np.matmul(masses, phsp.positions) / np.sum(masses)

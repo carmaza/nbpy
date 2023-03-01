@@ -1,7 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Defines class `particles.PhaseSpace`.
+Defines class :class:`.PhaseSpace`.
 
 """
 
@@ -12,42 +12,24 @@ import numpy.typing as npt
 class PhaseSpace:
     """
     An associative container that holds variables related to the phase space
-    of an N-body simulation. Specifically, it holds:
+    of an N-body simulation. Specifically, it holds the following keys:
 
-    - Positions: N-by-3 array.
-    - Velocities: N-by-3 array.
-    - Accelerations: N-by-3 array.
+    - ``"Positions"``: N-by-3 array.
+    - ``"Velocities"``: N-by-3 array.
+    - ``"Accelerations"``: N-by-3 array.
 
-    Attributes
+    Parameters
     ----------
 
-    - `positions`: numpy.typing.NDArray
-      The positions of the particles.
-
-    - `velocities`: numpy.typing.NDArray
-      The velocities of the particles
-
-    - `velocities`: numpy.typing.NDArray
-      The positions of the particles
-
-    Functions
-    ---------
-
-    - `set_positions(value)`
-      Sets positions to new value `value`.
-
-    - `set_velocities(value)`
-      Sets velocities to new value `value`.
-
-    - `set_accelerations(value)`
-      Sets accelerations to new value `value`.
+    N : int
+        The number of particles in the system.
 
     Notes
     -----
 
-    - All variables are first initialized to NaNs during the construction of the
-      object. It is expected that the attributes are subsequently set to
-      acceptable values using the provided setters.
+    - All members are initialized to NaNs during the construction of the
+      object. It is expected that these are subsequently set to acceptable
+      values later in the simulation using the provided setters.
 
     """
 
