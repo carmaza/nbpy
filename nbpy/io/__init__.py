@@ -6,4 +6,5 @@ Defines functions related to Input/Output operations.
 """
 
 from .input_from_yaml import *
+from .plot import *
 from .write_snapshot_to_disk import *
