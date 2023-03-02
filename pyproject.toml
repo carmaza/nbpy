@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=59.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nbpy"
+version = "0.1.0"
+description = "Recreational N-body problem solver"
+authors = [{name = "Cristóbal Armaza", email="ca455@cornell.edu"}]
+readme = "README.md"
+requires-python = ">=3.10"
+keywords = ["astrophysics", "galactic", "n-body", "gravity"]
+classifiers = [
+"Programming Language :: Python :: 3",
+"License :: OSI Approved :: MIT License",
+"Operating System :: OS Independent",
+]
+dependencies = ["h5py>=3.7.0", "matplotlib>=3.6.0", "numpy>=1.23.0", "pyyaml>=5.4.1"]
+
+[project.urls]
+"Homepage" = "https://github.com/carmaza/nbpy"
