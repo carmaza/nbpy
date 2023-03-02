@@ -1,10 +1,7 @@
 # Distributed under the MIT License.
 # See LICENSE for details.
 """
-Defines the following function:
-
-- `write_snapshot_to_disk(options, data, time)`
-  Writes the given data to a HDF5 file.
+Defines the function :func:`.write_snapshot_to_disk`.
 
 """
 
@@ -25,34 +22,32 @@ def write_snapshot_to_disk(options: dict, data: npt.NDArray,
     Parameters
     ----------
 
-    `options` : dict
-    Dictionary of options for observing.
+    options : dict
+        Dictionary of options for observing.
 
-    `data` : numpy.typing.NDArray
-    The data, stored as a numpy array.
+    data : numpy.typing.NDArray
+        The data, stored as a numpy array.
 
-    `time` : nbpy.Time
-    The `Time` object representing the time of observation.
+    time : :class:`.Time`
+        The object representing the time of observation.
 
     Returns
     -------
 
     out : string
-    The _absolute_ path to the file written.
+        The absolute path to the file written.
 
     Notes
     -----
 
-    The argument `options` must hold the following keys:
+    The argument ``options`` must hold the following keys:
 
-    - `"Filename"` : string
-      The name of the file to write, _without_ extension.
-
-    - `"Groupname"`: string
-      The name of the group in the HDF5 File object.
+    - ``"Filename"``: the name of the file to write, without extension.
+    - ``"Groupname"``: the name of the group in the HDF5 File object.
 
     These keys are contained, for instance, in the object returned by
-    `io.input_from_yaml`, particularly the value linked to the key "Observers".
+    :func:`.input_from_yaml`, particularly the value linked to the key
+    ``"Observers"``.
 
     """
     groupname = options["Groupname"]
