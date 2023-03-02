@@ -5,4 +5,4 @@ Fig*
 
 # Build files and directories
 build*
-nbpy.*
+nbpy.egg-info
